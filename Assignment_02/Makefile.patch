@@ -1,0 +1,22 @@
+Subject: Patch Assignment02
+From: Gchopin <gchopin@student.42.fr>
+
+commit: This is a test commit for 42Paris
+
+Signed-off-by: Gchopin <gchopin@student.42.fr>
+---
+diff --git a/Makefile b/Makefile
+index e1bf12891cb0..04a79bc8f210 100644
+--- a/Makefile
++++ b/Makefile
+@@ -2,7 +2,7 @@
+ VERSION = 6
+ PATCHLEVEL = 9
+ SUBLEVEL = 0
+-EXTRAVERSION = -rc3
++EXTRAVERSION = -thor-kernel
+ NAME = Hurr durr I'ma ninja sloth
+ 
+ # *DOCUMENTATION*
+
+base-commit: 586b5dfb51b962c1b6c06495715e4c4f76a7fc5a
