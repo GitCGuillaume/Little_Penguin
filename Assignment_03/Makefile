@@ -1,4 +1,4 @@
-obj-m += sleep.o
+obj-m += sleepy.o
 
 
 VERSION = `uname -r`
