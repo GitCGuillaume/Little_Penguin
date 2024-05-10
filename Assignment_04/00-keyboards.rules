@@ -1,3 +1,3 @@
 # Rules that display info text when kernel detect a new keyboard
 
-ATTRS{bInterfaceClass}=="03", SUBSYSTEMS=="usb", RUN+="/usr/sbin/insmod '/home/gchopin/Documents/Little_Penguin/Assignment_04/main.ko'"
+ACTION=="add", ATTR{bInterfaceClass}=="03", ATTR{bInterfaceSubClass}=="01", SUBSYSTEM=="usb", RUN+="/usr/sbin/insmod '/home/gchopin/Documents/Little_Penguin/Assignment_04/main.ko'"
