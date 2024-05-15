@@ -9,12 +9,24 @@ MODULE_AUTHOR("gchopin");
 
 struct miscdevice g_misc;
 
-static ssize_t ft_read(struct file *rd,  char __user * u, size_t count, loff_t *loff) {
-	return (0);
+static ssize_t ft_read(struct file *tree,  char __user * buf, size_t count, loff_t *offset) {
+	//copy_to_user
+	int ret = 0;
+	ret = copy_to_user(buf, tree->private_data, count);
+	//printk("test: %d %s", ret, buf);
+	//if < 0
+	*offset += count;
+	return (ret);
 }
 
-static ssize_t ft_write(struct file *wr, const char __user * u, size_t count, loff_t *loff) {
-	return (0);
+static ssize_t ft_write(struct file *tree, const char __user * buf, size_t count, loff_t *offset) {
+	int ret = 0;
+	//copy from user
+	ret = copy_from_user(tree->private_data, buf, count);
+	//printk("test: %d %s", ret, buf);
+	//if < 0
+	*offset += count;
+	return (ret);
 }
 
 /*
@@ -31,7 +43,7 @@ static int __init init_hello(void)
 	memset(&g_misc, 0, sizeof(struct miscdevice));
 	g_misc.fops = &fops;
 	g_misc.minor = MISC_DYNAMIC_MINOR;
-	g_misc.name = "c_hello_world";
+	g_misc.name = "fortytwo";
 	int res = misc_register(&g_misc);
 	if (res != 0) {
 		printk(KERN_ERR "Couldn't register miscellaneous device !\n");
