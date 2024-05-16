@@ -7,39 +7,54 @@
 MODULE_LICENSE("42");
 MODULE_AUTHOR("gchopin");
 
+static ssize_t ft_read(struct file *tree,  char __user * buf,
+		size_t count, loff_t *offset) {
+	int ret = 0;
+
+	if (count <= *offset)
+		return 0;
+	ret = copy_to_user(buf, "gchopin\n", 8);
+	if (ret) {
+		return -EFAULT;
+	}
+	*offset += count - ret;
+	return (count - ret);
+}
+
+static ssize_t ft_write(struct file *tree, const char __user * buf,
+		size_t count, loff_t *offset) {
+	char *str = (void *)0;
+	int ret = 0;
+
+	str = kmalloc(count * sizeof(char) + 1, GFP_KERNEL);
+	if (!str)
+		return EFAULT;
+	memset(str, 0, count + 1);
+	if (count < *offset)
+		return 0;
+	ret = copy_from_user(str, buf, count);
+	if (ret) {
+		return EFAULT;
+	}
+	*offset += count - ret;
+	if (!memcmp(str, "gchopin", 7))
+		return count;
+	return -EINVAL;
+}
+
+struct file_operations fops = {
+		.owner = THIS_MODULE,
+		.read = ft_read,
+		.write = ft_write
+};
+
 struct miscdevice g_misc;
-
-static ssize_t ft_read(struct file *tree,  char __user * buf, size_t count, loff_t *offset) {
-	//copy_to_user
-	int ret = 0;
-	ret = copy_to_user(buf, tree->private_data, count);
-	//printk("test: %d %s", ret, buf);
-	//if < 0
-	*offset += count;
-	return (ret);
-}
-
-static ssize_t ft_write(struct file *tree, const char __user * buf, size_t count, loff_t *offset) {
-	int ret = 0;
-	//copy from user
-	ret = copy_from_user(tree->private_data, buf, count);
-	//printk("test: %d %s", ret, buf);
-	//if < 0
-	*offset += count;
-	return (ret);
-}
 
 /*
  * To register a device with a minor number
  * https://www.kernel.org/doc/html/v4.13/driver-api/misc_devices.html
 */
-static int __init init_hello(void)
-{
-	struct file_operations fops = {
-		.owner = THIS_MODULE,
-		.read = ft_read,
-		.write = ft_write
-	};
+static int __init init_hello(void) {
 	memset(&g_misc, 0, sizeof(struct miscdevice));
 	g_misc.fops = &fops;
 	g_misc.minor = MISC_DYNAMIC_MINOR;
@@ -47,14 +62,13 @@ static int __init init_hello(void)
 	int res = misc_register(&g_misc);
 	if (res != 0) {
 		printk(KERN_ERR "Couldn't register miscellaneous device !\n");
-		return (1);
+		return 1;
 	}
 	printk(KERN_INFO "Hello world !\n");
-	return (0);
+	return 0;
 }
 
-static void __exit exit_hello(void)
-{
+static void __exit exit_hello(void) {
 	misc_deregister(&g_misc);
 	printk(KERN_INFO "Cleaning up module.\n");
 }
