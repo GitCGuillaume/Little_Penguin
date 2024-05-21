@@ -2,7 +2,7 @@
 #include <linux/kernel.h>
 #include <linux/init.h>
 
-MODULE_LICENSE("42");
+MODULE_LICENSE("GPL");
 MODULE_AUTHOR("gchopin");
 
 static int __init init_hello(void)

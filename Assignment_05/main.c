@@ -4,7 +4,7 @@
 #include <linux/string.h>
 #include <linux/miscdevice.h>
 
-MODULE_LICENSE("42");
+MODULE_LICENSE("GPL");
 MODULE_AUTHOR("gchopin");
 
 static ssize_t ft_read(struct file *tree,  char __user * buf,
