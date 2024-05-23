@@ -31,18 +31,25 @@ static ssize_t ft_write(struct file *tree, const char __user * buf,
 	if (!str)
 		return EFAULT;
 	memset(str, 0, count + 1);
-	if (count < *offset)
+	if (count < *offset) {
+		kfree(str);
 		return 0;
+	}
 	ret = copy_from_user(str, buf, count);
-	if (ret)
+	if (ret) {
+		kfree(str);
 		return EFAULT;
+	}
 	*offset += count - ret;
 	if (count > 0 && str[count - 1] == '\n')
 		--len;
 	if (len < 7)
 		len = 7;
-	if (!memcmp(str, "gchopin", len))
+	if (!memcmp(str, "gchopin", len)) {
+		kfree(str);
 		return count;
+	}
+	kfree(str);
 	return -EINVAL;
 }
 
