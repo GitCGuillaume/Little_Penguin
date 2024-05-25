@@ -10,6 +10,7 @@ MODULE_AUTHOR("gchopin");
 struct dentry *dentry_42 = (void *)0;
 struct dentry *dentry_id = (void *)0;
 struct dentry *dentry_jiffies = (void *)0;
+//unsigned long volatile jiffies;
 
 static ssize_t ft_write(struct file *tree, const char __user * buf,
 		size_t count, loff_t *offset) {
@@ -59,16 +60,24 @@ static ssize_t ft_read(struct file *tree,  char __user * buf,
 
 static ssize_t read_jiffies(struct file *tree,  char __user * buf,
 		size_t count, loff_t *offset) {
+	unsigned long cpy = 0;
 	int ret = 0;
-
 	if (count <= *offset)
 		return 0;
-	ret = copy_to_user(buf, "gchopin\n", 8);
-	if (ret) {
-		return -EFAULT;
+	printk("count: %ld\n", count);
+	static size_t i = 0;
+	if (i == 1)
+		return 0;
+	if (cpy == 0) {
+		ret = put_user(0 + '0', buf++);
+		if (ret)
+			return -EFAULT;
+		(*offset)++;
+		i++;
+		count--;
+		return i;
 	}
-	*offset += count - ret;
-	return (count - ret);
+	return 0;
 }
 
 const struct file_operations fops = {
@@ -79,7 +88,7 @@ const struct file_operations fops = {
 
 const struct file_operations fops_jiffies = {
 	.owner = THIS_MODULE,
-	.read = ft_read,
+	.read = read_jiffies,
 };
 
 
@@ -97,7 +106,7 @@ static int __init init_hello(void)
 	}
 	dentry_jiffies = debugfs_create_file("jiffies", 0222, dentry_42, NULL, &fops_jiffies);
 	if (!dentry_jiffies) {
-		printk(KERN_ERR "Couldn't initialize id debugfs device.");
+		printk(KERN_ERR "Couldn't initialize jiffies debugfs device.");
 		return 1;
 	}
 	printk(KERN_INFO "Hello world !\n");
@@ -106,9 +115,9 @@ static int __init init_hello(void)
 
 static void __exit exit_hello(void)
 {
-	debugfs_remove(dentry_42);
 	debugfs_remove(dentry_id);
 	debugfs_remove(dentry_jiffies);
+	debugfs_remove(dentry_42);
 	printk(KERN_INFO "Cleaning up module.\n");
 }
 
