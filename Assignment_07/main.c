@@ -10,8 +10,11 @@ MODULE_AUTHOR("gchopin");
 struct dentry *dentry_42 = (void *)0;
 struct dentry *dentry_id = (void *)0;
 struct dentry *dentry_jiffies = (void *)0;
-//unsigned long volatile jiffies;
+struct dentry *dentry_foo = (void *)0;
 
+/*
+ * write part
+*/
 static ssize_t ft_write(struct file *tree, const char __user * buf,
 		size_t count, loff_t *offset) {
 	char *str = (void *)0;
@@ -44,6 +47,17 @@ static ssize_t ft_write(struct file *tree, const char __user * buf,
 	return -EINVAL;
 }
 
+/*
+ * https://docs.kernel.org/admin-guide/mm/concepts.html
+*/
+static ssize_t ft_write_foo(struct file *tree, const char __user * buf,
+		size_t count, loff_t *offset) {
+
+}
+
+/*
+ * read part
+*/
 static ssize_t ft_read(struct file *tree,  char __user * buf,
 		size_t count, loff_t *offset) {
 	int ret = 0;
@@ -58,26 +72,37 @@ static ssize_t ft_read(struct file *tree,  char __user * buf,
 	return (count - ret);
 }
 
+static size_t nb_len(unsigned long cpy) {
+	size_t len = 0;
+
+	if (cpy == 0)
+		return 1;
+	while (cpy != 0) {
+		++len;
+		cpy /= 10;
+	}
+	return len;
+}
+
 static ssize_t read_jiffies(struct file *tree,  char __user * buf,
 		size_t count, loff_t *offset) {
-	unsigned long cpy = 0;
-	int ret = 0;
+	unsigned long cpy = jiffies;
 	if (count <= *offset)
 		return 0;
-	printk("count: %ld\n", count);
-	static size_t i = 0;
-	if (i == 1)
-		return 0;
-	if (cpy == 0) {
-		ret = put_user(0 + '0', buf++);
-		if (ret)
-			return -EFAULT;
-		(*offset)++;
-		i++;
-		count--;
-		return i;
+	char *str = kmalloc((nb_len(cpy) * sizeof(char)) + 2, GFP_KERNEL);
+	if (!str)
+		return 1;
+	snprintf(str, nb_len(cpy) + 1, "%ld", cpy);
+	str[nb_len(cpy)] = '\n';
+	str[nb_len(cpy) + 1] = '\0';
+	int ret = copy_to_user(buf, str, nb_len(cpy) + 1);
+	if (ret) {
+		kfree(str);
+		return -EFAULT;
 	}
-	return 0;
+	*offset += count - ret;
+	kfree(str);
+	return count - ret;
 }
 
 const struct file_operations fops = {
@@ -91,6 +116,11 @@ const struct file_operations fops_jiffies = {
 	.read = read_jiffies,
 };
 
+const struct file_operations fops_foo = {
+	.owner = THIS_MODULE,
+	.read = read_jiffies,
+	.write = ft_write
+};
 
 static int __init init_hello(void)
 {
@@ -104,8 +134,13 @@ static int __init init_hello(void)
 		printk(KERN_ERR "Couldn't initialize id debugfs device.");
 		return 1;
 	}
-	dentry_jiffies = debugfs_create_file("jiffies", 0222, dentry_42, NULL, &fops_jiffies);
+	dentry_jiffies = debugfs_create_file("jiffies", 0444, dentry_42, NULL, &fops_jiffies);
 	if (!dentry_jiffies) {
+		printk(KERN_ERR "Couldn't initialize jiffies debugfs device.");
+		return 1;
+	}
+	dentry_foo = debugfs_create_file("foo", 0622, dentry_42, NULL, &fops_foo);
+	if (!dentry_foo) {
 		printk(KERN_ERR "Couldn't initialize jiffies debugfs device.");
 		return 1;
 	}
@@ -117,6 +152,7 @@ static void __exit exit_hello(void)
 {
 	debugfs_remove(dentry_id);
 	debugfs_remove(dentry_jiffies);
+	debugfs_remove(dentry_foo);
 	debugfs_remove(dentry_42);
 	printk(KERN_INFO "Cleaning up module.\n");
 }
