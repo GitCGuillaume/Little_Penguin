@@ -3,6 +3,7 @@
 #include <linux/init.h>
 #include <linux/debugfs.h>
 #include <linux/jiffies.h>
+#include <linux/mm.h>
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("gchopin");
@@ -11,6 +12,8 @@ struct dentry *dentry_42 = (void *)0;
 struct dentry *dentry_id = (void *)0;
 struct dentry *dentry_jiffies = (void *)0;
 struct dentry *dentry_foo = (void *)0;
+struct page *page_value = (void *)NULL;
+void *virtual_address = (void *)NULL;
 
 /*
  * write part
@@ -49,10 +52,28 @@ static ssize_t ft_write(struct file *tree, const char __user * buf,
 
 /*
  * https://docs.kernel.org/admin-guide/mm/concepts.html
+ * https://www.kernel.org/doc/gorman/html/understand/understand009.html
+ *
 */
 static ssize_t ft_write_foo(struct file *tree, const char __user * buf,
 		size_t count, loff_t *offset) {
-
+	if (count < *offset)
+		return 0;
+	page_value = alloc_pages(GFP_KERNEL, 1);
+	if (!page_value)
+		return 1;
+	pr_info("physical addr: %p\n", page_value);
+	virtual_address = page_address(page_value);
+	clear_page(virtual_address);
+	int ret = copy_from_user(virtual_address, buf, count);
+	if (ret) {
+		return EFAULT;
+	}
+	*offset += count - ret;
+	printk("str:%s", (char *)virtual_address);
+	//memcpy(virtual_address, str, sizeof(str));
+	__free_page(page_value);
+	return count;
 }
 
 /*
@@ -105,6 +126,21 @@ static ssize_t read_jiffies(struct file *tree,  char __user * buf,
 	return count - ret;
 }
 
+static ssize_t ft_read_foo(struct file *tree,  char __user * buf,
+		size_t count, loff_t *offset) {
+	int ret = 0;
+
+	if (count <= *offset)
+		return 0;
+	printk("so:%ld\n", sizeof(*virtual_address));
+	printk("str2:%s\n", (char *)virtual_address);
+	ret = copy_to_user(buf, virtual_address, strlen(virtual_address));
+	if (ret) {
+		return -EFAULT;
+	}
+	*offset += count - ret;
+	return (count - ret);
+}
 const struct file_operations fops = {
 	.owner = THIS_MODULE,
 	.read = ft_read,
@@ -118,8 +154,8 @@ const struct file_operations fops_jiffies = {
 
 const struct file_operations fops_foo = {
 	.owner = THIS_MODULE,
-	.read = read_jiffies,
-	.write = ft_write
+	.read = ft_read_foo,
+	.write = ft_write_foo
 };
 
 static int __init init_hello(void)
