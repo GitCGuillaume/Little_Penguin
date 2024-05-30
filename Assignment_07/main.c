@@ -13,7 +13,9 @@ struct dentry *dentry_id = (void *)0;
 struct dentry *dentry_jiffies = (void *)0;
 struct dentry *dentry_foo = (void *)0;
 struct page *page_value = (void *)NULL;
+struct mutex lock;
 void *virtual_address = (void *)NULL;
+DEFINE_MUTEX(lock);
 
 /*
  * write part
@@ -59,20 +61,16 @@ static ssize_t ft_write_foo(struct file *tree, const char __user * buf,
 		size_t count, loff_t *offset) {
 	if (count < *offset)
 		return 0;
-	page_value = alloc_pages(GFP_KERNEL, 1);
-	if (!page_value)
-		return 1;
-	pr_info("physical addr: %p\n", page_value);
-	virtual_address = page_address(page_value);
+	if (mutex_lock_interruptible(&lock))
+		return -EINTR;
 	clear_page(virtual_address);
 	int ret = copy_from_user(virtual_address, buf, count);
 	if (ret) {
+		mutex_unlock(&lock);
 		return EFAULT;
 	}
 	*offset += count - ret;
-	printk("str:%s", (char *)virtual_address);
-	//memcpy(virtual_address, str, sizeof(str));
-	__free_page(page_value);
+	mutex_unlock(&lock);
 	return count;
 }
 
@@ -132,13 +130,15 @@ static ssize_t ft_read_foo(struct file *tree,  char __user * buf,
 
 	if (count <= *offset)
 		return 0;
-	printk("so:%ld\n", sizeof(*virtual_address));
-	printk("str2:%s\n", (char *)virtual_address);
+	if (mutex_lock_interruptible(&lock))
+		return -EINTR;
 	ret = copy_to_user(buf, virtual_address, strlen(virtual_address));
 	if (ret) {
+		mutex_unlock(&lock);
 		return -EFAULT;
 	}
 	*offset += count - ret;
+	mutex_unlock(&lock);
 	return (count - ret);
 }
 const struct file_operations fops = {
@@ -180,12 +180,18 @@ static int __init init_hello(void)
 		printk(KERN_ERR "Couldn't initialize jiffies debugfs device.");
 		return 1;
 	}
+	page_value = alloc_pages(GFP_KERNEL, 1);
+	if (!page_value)
+		return 1;
+	pr_info("physical addr: %p\n", page_value);
+	virtual_address = page_address(page_value);
 	printk(KERN_INFO "Hello world !\n");
 	return 0;
 }
 
 static void __exit exit_hello(void)
 {
+	__free_page(page_value);
 	debugfs_remove(dentry_id);
 	debugfs_remove(dentry_jiffies);
 	debugfs_remove(dentry_foo);
