@@ -28,7 +28,7 @@ static ssize_t ft_write(struct file *tree, const char __user * buf,
 
 	str = kmalloc(count * sizeof(char) + 1, GFP_KERNEL);
 	if (!str)
-		return EFAULT;
+		return -EFAULT;
 	memset(str, 0, count + 1);
 	if (count < *offset) {
 		kfree(str);
@@ -37,7 +37,7 @@ static ssize_t ft_write(struct file *tree, const char __user * buf,
 	ret = copy_from_user(str, buf, count);
 	if (ret) {
 		kfree(str);
-		return EFAULT;
+		return -EFAULT;
 	}
 	*offset += count - ret;
 	if (count > 0 && str[count - 1] == '\n')
@@ -55,19 +55,21 @@ static ssize_t ft_write(struct file *tree, const char __user * buf,
 /*
  * https://docs.kernel.org/admin-guide/mm/concepts.html
  * https://www.kernel.org/doc/gorman/html/understand/understand009.html
- *
+ op
 */
 static ssize_t ft_write_foo(struct file *tree, const char __user * buf,
 		size_t count, loff_t *offset) {
 	if (count < *offset)
 		return 0;
+	if (PAGE_SIZE <= count)
+		return -EINVAL;
 	if (mutex_lock_interruptible(&lock))
 		return -EINTR;
 	clear_page(virtual_address);
 	int ret = copy_from_user(virtual_address, buf, count);
 	if (ret) {
 		mutex_unlock(&lock);
-		return EFAULT;
+		return -EFAULT;
 	}
 	*offset += count - ret;
 	mutex_unlock(&lock);
@@ -180,7 +182,7 @@ static int __init init_hello(void)
 		printk(KERN_ERR "Couldn't initialize jiffies debugfs device.");
 		return 1;
 	}
-	page_value = alloc_pages(GFP_KERNEL, 1);
+	page_value = alloc_page(GFP_KERNEL);
 	if (!page_value)
 		return 1;
 	pr_info("physical addr: %p\n", page_value);

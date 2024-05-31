@@ -29,7 +29,7 @@ static ssize_t ft_write(struct file *tree, const char __user * buf,
 
 	str = kmalloc(count * sizeof(char) + 1, GFP_KERNEL);
 	if (!str)
-		return EFAULT;
+		return -EFAULT;
 	memset(str, 0, count + 1);
 	if (count < *offset) {
 		kfree(str);
@@ -38,7 +38,7 @@ static ssize_t ft_write(struct file *tree, const char __user * buf,
 	ret = copy_from_user(str, buf, count);
 	if (ret) {
 		kfree(str);
-		return EFAULT;
+		return -EFAULT;
 	}
 	*offset += count - ret;
 	if (count > 0 && str[count - 1] == '\n')
