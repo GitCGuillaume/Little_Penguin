@@ -1,0 +1,15 @@
+Read this : https://docs.kernel.org/filesystems/proc.html#kernel-data
+https://www.kernel.org/doc/html/v5.8/filesystems/seq_file.html#deprecated-create-proc-entry
+create_proc_entry is deprecated
+vim /lib/modules/6.9.0-next-20240521/build/include/linux/proc_fs.h
+voir proc_create
+partie rcu dit qu'il faut lock pour etre sur que la structure n est pas free pendant le lookup
+https://www.kernel.org/doc/html/latest/filesystems/path-lookup.html#rcu
+kern_path emplacement > vim /lib/modules/6.9.0-next-20240521/build/fs/namei.c
+linked list loop in the kernel
+https://lwn.net/Articles/887097/
+https://docs.kernel.org/RCU/whatisRCU.html
+ptr current (struct task_struct) { vim /lib/modules/6.9.0-next-20240521/build/include/linux/sched.h puis struct nsproxy
+nsproxy: vim /lib/modules/6.9.0-next-20240521/build/include/linux/nsproxy.h
+ensuite tout est dans vim /lib/modules/6.9.0-next-20240521/build/fs/mount.h
+vim /lib/modules/6.9.0-next-20240521/build/fs/mount.h
