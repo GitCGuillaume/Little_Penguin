@@ -66,6 +66,7 @@ static ssize_t my_fd_write(struct file *fp, const char __user *user,
 	res = simple_write_to_buffer(str, PAGE_SIZE, offs, user, size);
 	if (res < 0) {
 		memset(str, 0, PAGE_SIZE);
+		mutex_unlock(&lock);
 		return -EFAULT;
 	}
 	str[res] = '\0';
