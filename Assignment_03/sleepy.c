@@ -8,12 +8,14 @@ MODULE_LICENSE("42");
 /*
  * That was a long sleep, tell userspace about it
 */
-static int sleep_info(int x, int y) {
+static int sleep_info(int x, int y)
+{
 	pr_info("We slept a long time!");
 	return x * y;
 }
 
-static int do_work(int *my_int, int retval) {
+static int do_work(int *my_int, int retval)
+{
 	int	x;
 	int	y = *my_int;
 	int	z;
@@ -25,17 +27,19 @@ static int do_work(int *my_int, int retval) {
 		z = sleep_info(x, y);
 		return z;
 	}
-	return 1;
+	return 0;
 }
 
-static int my_init(void) {
+static int my_init(void)
+{
 	int x = 10;
 
 	x = do_work(&x, x);
 	return x;
 }
 
-static void	my_exit(void) {
+static void	my_exit(void)
+{
 	return ;
 }
 

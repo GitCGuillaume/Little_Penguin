@@ -24,17 +24,14 @@ static ssize_t ft_read(struct file *tree,  char __user * buf,
 static ssize_t ft_write(struct file *tree, const char __user * buf,
 		size_t count, loff_t *offset) {
 	char *str = (void *)0;
-	size_t len = count;
 	int ret = 0;
 
+	if (count < *offset)
+		return 0;
 	str = kmalloc(count * sizeof(char) + 1, GFP_KERNEL);
 	if (!str)
 		return -EFAULT;
 	memset(str, 0, count + 1);
-	if (count < *offset) {
-		kfree(str);
-		return 0;
-	}
 	ret = copy_from_user(str, buf, count);
 	if (ret) {
 		kfree(str);
@@ -42,10 +39,8 @@ static ssize_t ft_write(struct file *tree, const char __user * buf,
 	}
 	*offset += count - ret;
 	if (count > 0 && str[count - 1] == '\n')
-		--len;
-	if (len < 7)
-		len = 7;
-	if (!memcmp(str, "gchopin", len)) {
+		str[count - 1] = 0;
+	if (!strcmp(str, "gchopin")) {
 		kfree(str);
 		return count;
 	}

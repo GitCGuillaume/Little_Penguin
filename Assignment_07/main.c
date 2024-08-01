@@ -12,28 +12,26 @@ struct dentry *dentry_42 = (void *)0;
 struct dentry *dentry_id = (void *)0;
 struct dentry *dentry_jiffies = (void *)0;
 struct dentry *dentry_foo = (void *)0;
-struct page *page_value = (void *)NULL;
+struct page *page_value = (void *)0;
 struct mutex lock;
-void *virtual_address = (void *)NULL;
+void *virtual_address = (void *)0;
 DEFINE_MUTEX(lock);
 
 /*
  * write part
 */
 static ssize_t ft_write(struct file *tree, const char __user * buf,
-		size_t count, loff_t *offset) {
+		size_t count, loff_t *offset)
+{
 	char *str = (void *)0;
-	size_t len = count;
 	int ret = 0;
 
+	if (count < *offset)
+		return 0;
 	str = kmalloc(count * sizeof(char) + 1, GFP_KERNEL);
 	if (!str)
 		return -EFAULT;
 	memset(str, 0, count + 1);
-	if (count < *offset) {
-		kfree(str);
-		return 0;
-	}
 	ret = copy_from_user(str, buf, count);
 	if (ret) {
 		kfree(str);
@@ -41,10 +39,8 @@ static ssize_t ft_write(struct file *tree, const char __user * buf,
 	}
 	*offset += count - ret;
 	if (count > 0 && str[count - 1] == '\n')
-		--len;
-	if (len < 7)
-		len = 7;
-	if (!memcmp(str, "gchopin", len)) {
+		str[count - 1] = 0;
+	if (!strcmp(str, "gchopin")) {
 		kfree(str);
 		return count;
 	}
@@ -58,9 +54,11 @@ static ssize_t ft_write(struct file *tree, const char __user * buf,
  op
 */
 static ssize_t ft_write_foo(struct file *tree, const char __user * buf,
-		size_t count, loff_t *offset) {
+		size_t count, loff_t *offset)
+{
 	if (count < *offset)
 		return 0;
+	printk("ld:%lu\n", PAGE_SIZE);
 	if (PAGE_SIZE <= count)
 		return -EINVAL;
 	if (mutex_lock_interruptible(&lock))
@@ -80,7 +78,8 @@ static ssize_t ft_write_foo(struct file *tree, const char __user * buf,
  * read part
 */
 static ssize_t ft_read(struct file *tree,  char __user * buf,
-		size_t count, loff_t *offset) {
+		size_t count, loff_t *offset)
+{
 	int ret = 0;
 
 	if (count <= *offset)
@@ -93,7 +92,8 @@ static ssize_t ft_read(struct file *tree,  char __user * buf,
 	return (count - ret);
 }
 
-static size_t nb_len(unsigned long cpy) {
+static size_t nb_len(unsigned long cpy)
+{
 	size_t len = 0;
 
 	if (cpy == 0)
@@ -106,7 +106,8 @@ static size_t nb_len(unsigned long cpy) {
 }
 
 static ssize_t read_jiffies(struct file *tree,  char __user * buf,
-		size_t count, loff_t *offset) {
+		size_t count, loff_t *offset)
+{
 	unsigned long cpy = jiffies;
 	if (count <= *offset)
 		return 0;
@@ -127,7 +128,8 @@ static ssize_t read_jiffies(struct file *tree,  char __user * buf,
 }
 
 static ssize_t ft_read_foo(struct file *tree,  char __user * buf,
-		size_t count, loff_t *offset) {
+		size_t count, loff_t *offset)
+{
 	int ret = 0;
 
 	if (count <= *offset)
@@ -160,6 +162,19 @@ const struct file_operations fops_foo = {
 	.write = ft_write_foo
 };
 
+static int init_debugfs_file(const char *name, const umode_t mode,
+		struct dentry **d, const struct file_operations *f_op)
+{
+	if (!d)
+		return 1;
+	*d = debugfs_create_file(name, 0666, dentry_42, NULL, *&f_op);
+	if (!*d) {
+		printk(KERN_ERR "Couldn't initialize debugfs device.");
+		return 1;
+	}
+	return 0;
+}
+
 static int __init init_hello(void)
 {
 	dentry_42 = debugfs_create_dir("fortytwo", NULL);
@@ -167,21 +182,12 @@ static int __init init_hello(void)
 		printk(KERN_ERR "Couldn't initialize fortytwo directory.");
 		return 1;
 	}
-	dentry_id = debugfs_create_file("id", 0666, dentry_42, NULL, &fops);
-	if (!dentry_id) {
-		printk(KERN_ERR "Couldn't initialize id debugfs device.");
+	if (init_debugfs_file("id", 0666, &dentry_id, &fops))
 		return 1;
-	}
-	dentry_jiffies = debugfs_create_file("jiffies", 0444, dentry_42, NULL, &fops_jiffies);
-	if (!dentry_jiffies) {
-		printk(KERN_ERR "Couldn't initialize jiffies debugfs device.");
+	if (init_debugfs_file("jiffies", 0444, &dentry_jiffies, &fops_jiffies))
 		return 1;
-	}
-	dentry_foo = debugfs_create_file("foo", 0622, dentry_42, NULL, &fops_foo);
-	if (!dentry_foo) {
-		printk(KERN_ERR "Couldn't initialize jiffies debugfs device.");
+	if (init_debugfs_file("foo", 0644, &dentry_foo, &fops_foo))
 		return 1;
-	}
 	page_value = alloc_page(GFP_KERNEL);
 	if (!page_value)
 		return 1;
@@ -194,10 +200,14 @@ static int __init init_hello(void)
 static void __exit exit_hello(void)
 {
 	__free_page(page_value);
-	debugfs_remove(dentry_id);
-	debugfs_remove(dentry_jiffies);
-	debugfs_remove(dentry_foo);
-	debugfs_remove(dentry_42);
+	if (dentry_id)
+		debugfs_remove(dentry_id);
+	if (dentry_jiffies)
+		debugfs_remove(dentry_jiffies);
+	if (dentry_foo)
+		debugfs_remove(dentry_foo);
+	if (dentry_42)
+		debugfs_remove(dentry_42);
 	printk(KERN_INFO "Cleaning up module.\n");
 }
 
