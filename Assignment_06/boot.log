@@ -1,0 +1,24 @@
+Sep 04 13:14:33 +02:00 (none)  Mounting virtual file systems: /run /proc /sys /dev/shm /sys/fs/cgroup OK
+Sep 04 13:14:33 +02:00 (none)  Create symlinks in /dev targeting /proc: /dev/stdin /dev/stdout /dev/stderr /dev/fd /dev/core OK
+Sep 04 13:14:33 +02:00 (none)  Bringing up the loopback interface... OK
+Sep 04 13:14:33 +02:00 (none)  Setting hostname to gchopin... OK
+Sep 04 13:14:33 +02:00 gchopin  Populating /dev with device nodes...  OK
+Sep 04 13:14:30 +02:00 gchopin  Activating all swap files/partitions... OK
+Sep 04 13:14:30 +02:00 gchopin  Mounting root file system in read-only mode...  OK
+Sep 04 13:14:30 +02:00 gchopin  Checking file systems... OK
+Sep 04 13:14:31 +02:00 gchopin  Remounting root file system in read-write mode... OK
+Sep 04 13:14:31 +02:00 gchopin  Mounting remaining file systems... OK
+Sep 04 13:14:31 +02:00 gchopin  Cleaning file systems: /tmp OK
+Sep 04 13:14:31 +02:00 gchopin  Creating files and directories...  OK
+Sep 04 13:14:31 +02:00 gchopin  Retrying failed uevents, if any... OK
+Sep 04 13:14:32 +02:00 gchopin  Setting up Linux console... OK
+Sep 04 13:14:32 +02:00 gchopin  Starting system log daemon... OK
+Sep 04 13:14:32 +02:00 gchopin  Starting kernel log daemon... OK
+Sep 04 13:14:32 +02:00 gchopin  Bringing up the eth0 interface... OK
+Sep 04 13:14:32 +02:00 gchopin  Adding IPv4 address 10.0.2.15 to the eth0 interface... OK
+Sep 04 13:14:32 +02:00 gchopin  Adding default gateway 10.0.2.2 to the eth0 interface... OK
+Sep 04 13:14:32 +02:00 gchopin  Starting ntpd... OK
+Sep 04 13:14:33 +02:00 gchopin  Starting the D-Bus Messagebus Daemon... OK
+Sep 04 13:14:33 +02:00 gchopin  Starting SSH Server... OK
+Sep 04 13:14:34 +02:00 gchopin  Starting network connection manager NetworkManager OK
+--------
