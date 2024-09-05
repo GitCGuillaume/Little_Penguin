@@ -6,26 +6,24 @@
 MODULE_LICENSE("42");
 
 /*
- * That was a long sleep, tell userspace about it
+ * Tell userspace about long sleep
 */
-static int sleep_info(int x, int y)
+static void sleep_info(void)
 {
 	pr_info("We slept a long time!");
-	return x * y;
 }
 
-static int do_work(int *my_int, int retval)
+static int do_work(int *my_int)
 {
-	int	x;
-	int	y = *my_int;
-	int	z;
+	int	i;
+	int	j = *my_int;
+	int	result;
 
-	for (x = 0; x < *my_int; ++x) {
+	for (i = 0; i < *my_int; ++i)
 		udelay(10);
-	}
-	if (y < 10) {
-		z = sleep_info(x, y);
-		return z;
+	if (j < 10) {
+		sleep_info();
+		result = i * j;
 	}
 	return 0;
 }
@@ -34,7 +32,7 @@ static int my_init(void)
 {
 	int x = 10;
 
-	x = do_work(&x, x);
+	x = do_work(&x);
 	return x;
 }
 
