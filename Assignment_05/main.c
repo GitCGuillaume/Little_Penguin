@@ -14,29 +14,29 @@ static ssize_t ft_read(struct file *tree,  char __user * buf,
 	if (count <= *offset)
 		return 0;
 	ret = copy_to_user(buf, "gchopin\n", 8);
-	if (ret) {
-		return -EFAULT;
-	}
+	//if (ret) {
+	//	return -EFAULT;
+	//}
 	*offset += count - ret;
 	return (count - ret);
 }
 
 static ssize_t ft_write(struct file *tree, const char __user * buf,
 		size_t count, loff_t *offset) {
-	char *str = (void *)0;
+	char *str = NULL;
 	int ret = 0;
 
-	if (count < *offset)
+	if (count <= *offset)
 		return 0;
 	str = kmalloc(count * sizeof(char) + 1, GFP_KERNEL);
 	if (!str)
 		return -EFAULT;
 	memset(str, 0, count + 1);
 	ret = copy_from_user(str, buf, count);
-	if (ret) {
-		kfree(str);
-		return -EFAULT;
-	}
+	//if (ret) {
+	//	kfree(str);
+	//	return -EFAULT;
+	//}
 	*offset += count - ret;
 	if (count > 0 && str[count - 1] == '\n')
 		str[count - 1] = 0;
@@ -81,4 +81,3 @@ static void __exit exit_hello(void) {
 
 module_init(init_hello);
 module_exit(exit_hello);
-

@@ -46,8 +46,9 @@ static ssize_t my_fd_read(struct file *fp, char __user *user,
 	kfree(tmp);
 	tmp = 0;
 	mutex_unlock(&lock);
-	if (res < 0)
-		return -EFAULT;
+	//pas besoin
+	//if (res < 0)
+	//	return -EFAULT;
 	return res;
 }
 
@@ -64,11 +65,12 @@ static ssize_t my_fd_write(struct file *fp, const char __user *user,
 		return -EINTR;
 	memset(str, 0, PAGE_SIZE);
 	res = simple_write_to_buffer(str, PAGE_SIZE, offs, user, size);
-	if (res < 0) {
-		memset(str, 0, PAGE_SIZE);
-		mutex_unlock(&lock);
-		return -EFAULT;
-	}
+	//pas besoin
+	//if (res < 0) {
+	//	memset(str, 0, PAGE_SIZE);
+	//	mutex_unlock(&lock);
+	//	return -EFAULT;
+	//}
 	str[res] = '\0';
 	mutex_unlock(&lock);
 	return res;

@@ -20,7 +20,6 @@ void	recursive_name(struct seq_file *file, struct mount *mnt)
 
 	show_path.mnt = &mnt->mnt;
 	show_path.dentry = mnt->mnt_mountpoint;
-	
 	seq_puts(file, mnt->mnt_devname);
 	seq_putc(file, ' ');
 	if (mnt->mnt_parent) {
@@ -40,7 +39,8 @@ int show (struct seq_file *file, void *private)
 
 	for (mnt = rb_entry_safe(rb_first(root), struct mount, mnt_node);
 		mnt != NULL;
-		mnt = rb_entry_safe(rb_next(&mnt->mnt_node), struct mount, mnt_node)) {
+		mnt = rb_entry_safe(rb_next(&mnt->mnt_node),
+			struct mount, mnt_node)) {
 		if (strcmp(mnt->mnt_devname, "rootfs") != 0)
 			recursive_name(file, mnt);
 	}
