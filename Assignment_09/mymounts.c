@@ -63,7 +63,7 @@ static int __init init_mymounts(void)
 {
 	proc_mymounts = proc_create("mymounts", 0600, NULL, &p_ops);
 	if (!proc_mymounts)
-		return 1;
+		return -ENOMEM;
 	return 0;
 }
 
