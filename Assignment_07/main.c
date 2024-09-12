@@ -42,7 +42,7 @@ static ssize_t ft_write(struct file *tree, const char __user * buf,
 		str[count - 1] = 0;
 	if (!strcmp(str, "gchopin")) {
 		kfree(str);
-		return count;
+		return count - ret;
 	}
 	kfree(str);
 	return -EINVAL;
@@ -71,7 +71,7 @@ static ssize_t ft_write_foo(struct file *tree, const char __user * buf,
 	//}
 	*offset += count - ret;
 	mutex_unlock(&lock);
-	return count;
+	return count - ret;
 }
 
 /*
@@ -89,7 +89,7 @@ static ssize_t ft_read(struct file *tree,  char __user * buf,
 	//	return -EFAULT;
 	//}
 	*offset += count - ret;
-	return (count - ret);
+	return count - ret;
 }
 
 static size_t nb_len(unsigned long cpy)
@@ -143,7 +143,7 @@ static ssize_t ft_read_foo(struct file *tree,  char __user * buf,
 	//}
 	*offset += count - ret;
 	mutex_unlock(&lock);
-	return (count - ret);
+	return count - ret;
 }
 const struct file_operations fops = {
 	.owner = THIS_MODULE,

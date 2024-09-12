@@ -18,7 +18,7 @@ static ssize_t ft_read(struct file *tree,  char __user * buf,
 	//	return -EFAULT;
 	//}
 	*offset += count - ret;
-	return (count - ret);
+	return count - ret;
 }
 
 static ssize_t ft_write(struct file *tree, const char __user * buf,
@@ -42,7 +42,7 @@ static ssize_t ft_write(struct file *tree, const char __user * buf,
 		str[count - 1] = 0;
 	if (!strcmp(str, "gchopin")) {
 		kfree(str);
-		return count;
+		return count - ret;
 	}
 	kfree(str);
 	return -EINVAL;
