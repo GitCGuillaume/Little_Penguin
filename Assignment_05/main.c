@@ -14,11 +14,10 @@ static ssize_t ft_read(struct file *tree,  char __user * buf,
 	if (count <= *offset)
 		return 0;
 	ret = copy_to_user(buf, "gchopin\n", 8);
-	//if (ret) {
-	//	return -EFAULT;
-	//}
-	*offset += count - ret;
-	return count - ret;
+	if (ret)
+		return -EFAULT;
+	*offset += count;// - ret;
+	return count;// - ret;
 }
 
 static ssize_t ft_write(struct file *tree, const char __user * buf,
@@ -28,21 +27,21 @@ static ssize_t ft_write(struct file *tree, const char __user * buf,
 
 	if (count <= *offset)
 		return 0;
-	str = kmalloc(count * sizeof(char) + 1, GFP_KERNEL);
+	str = kzalloc(count * sizeof(char) + 1, GFP_KERNEL);
 	if (!str)
 		return -EFAULT;
-	memset(str, 0, count + 1);
+	//memset(str, 0, count + 1);
 	ret = copy_from_user(str, buf, count);
-	//if (ret) {
-	//	kfree(str);
-	//	return -EFAULT;
-	//}
-	*offset += count - ret;
+	if (ret) {
+		kfree(str);
+		return -EFAULT;
+	}
+	*offset += count;// - ret;
 	if (count > 0 && str[count - 1] == '\n')
 		str[count - 1] = 0;
 	if (!strcmp(str, "gchopin")) {
 		kfree(str);
-		return count - ret;
+		return count;// - ret;
 	}
 	kfree(str);
 	return -EINVAL;
