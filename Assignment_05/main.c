@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
@@ -7,8 +8,9 @@
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("gchopin");
 
-static ssize_t ft_read(struct file *tree,  char __user * buf,
-		size_t count, loff_t *offset) {
+static ssize_t ft_read(struct file *filep,  char __user *buf,
+		size_t count, loff_t *offset)
+{
 	int ret = 0;
 
 	if (count <= *offset)
@@ -16,12 +18,13 @@ static ssize_t ft_read(struct file *tree,  char __user * buf,
 	ret = copy_to_user(buf, "gchopin\n", 8);
 	if (ret)
 		return -EFAULT;
-	*offset += count;// - ret;
-	return count;// - ret;
+	*offset += count;
+	return count;
 }
 
-static ssize_t ft_write(struct file *tree, const char __user * buf,
-		size_t count, loff_t *offset) {
+static ssize_t ft_write(struct file *filep, const char __user *buf,
+		size_t count, loff_t *offset)
+{
 	char *str = NULL;
 	int ret = 0;
 
@@ -30,24 +33,23 @@ static ssize_t ft_write(struct file *tree, const char __user * buf,
 	str = kzalloc(count * sizeof(char) + 1, GFP_KERNEL);
 	if (!str)
 		return -EFAULT;
-	//memset(str, 0, count + 1);
 	ret = copy_from_user(str, buf, count);
 	if (ret) {
 		kfree(str);
 		return -EFAULT;
 	}
-	*offset += count;// - ret;
+	*offset += count;
 	if (count > 0 && str[count - 1] == '\n')
 		str[count - 1] = 0;
 	if (!strcmp(str, "gchopin")) {
 		kfree(str);
-		return count;// - ret;
+		return count;
 	}
 	kfree(str);
 	return -EINVAL;
 }
 
-struct file_operations fops = {
+const struct file_operations fops = {
 		.owner = THIS_MODULE,
 		.read = ft_read,
 		.write = ft_write
@@ -58,24 +60,28 @@ struct miscdevice g_misc;
 /*
  * To register a device with a minor number
  * https://www.kernel.org/doc/html/v4.13/driver-api/misc_devices.html
-*/
-static int __init init_hello(void) {
+ */
+static int __init init_hello(void)
+{
+	int res;
+
 	memset(&g_misc, 0, sizeof(struct miscdevice));
 	g_misc.fops = &fops;
 	g_misc.minor = MISC_DYNAMIC_MINOR;
 	g_misc.name = "fortytwo";
-	int res = misc_register(&g_misc);
+	res = misc_register(&g_misc);
 	if (res != 0) {
-		printk(KERN_ERR "Couldn't register miscellaneous device !\n");
+		pr_err("Couldn't register miscellaneous device !\n");
 		return 1;
 	}
-	printk(KERN_INFO "Hello world !\n");
+	pr_info("Hello world !\n");
 	return 0;
 }
 
-static void __exit exit_hello(void) {
+static void __exit exit_hello(void)
+{
 	misc_deregister(&g_misc);
-	printk(KERN_INFO "Cleaning up module.\n");
+	pr_info("Cleaning up module.\n");
 }
 
 module_init(init_hello);

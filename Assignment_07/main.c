@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
@@ -8,19 +9,19 @@
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("gchopin");
 
-struct dentry *dentry_42 = NULL;
-struct dentry *dentry_id = NULL;
-struct dentry *dentry_jiffies = NULL;
-struct dentry *dentry_foo = NULL;
-struct page *page_value = NULL;
+struct dentry *dentry_42;
+struct dentry *dentry_id;
+struct dentry *dentry_jiffies;
+struct dentry *dentry_foo;
+struct page *page_value;
 struct mutex lock;
-void *virtual_address = NULL;
+void *virtual_address;
 DEFINE_MUTEX(lock);
 
 /*
  * write part
-*/
-static ssize_t ft_write(struct file *tree, const char __user * buf,
+ */
+static ssize_t ft_write(struct file *filep, const char __user *buf,
 		size_t count, loff_t *offset)
 {
 	char *str = NULL;
@@ -50,13 +51,15 @@ static ssize_t ft_write(struct file *tree, const char __user * buf,
 /*
  * https://docs.kernel.org/admin-guide/mm/concepts.html
  * https://www.kernel.org/doc/gorman/html/understand/understand009.html
-*/
-static ssize_t ft_write_foo(struct file *tree, const char __user * buf,
+ */
+static ssize_t ft_write_foo(struct file *filep, const char __user *buf,
 		size_t count, loff_t *offset)
 {
+	int ret;
+
 	if (count <= *offset)
 		return 0;
-	if (PAGE_SIZE <= count)
+	if (count >= PAGE_SIZE)
 		return -EINVAL;
 	if (mutex_lock_interruptible(&lock))
 		return -EINTR;
@@ -70,7 +73,7 @@ static ssize_t ft_write_foo(struct file *tree, const char __user * buf,
 		return -EFAULT;
 	}
 	clear_page(virtual_address);
-	int ret = copy_from_user(virtual_address, buf, count);
+	ret = copy_from_user(virtual_address, buf, count);
 	if (ret) {
 		mutex_unlock(&lock);
 		return -EFAULT;
@@ -82,8 +85,8 @@ static ssize_t ft_write_foo(struct file *tree, const char __user * buf,
 
 /*
  * read part
-*/
-static ssize_t ft_read(struct file *tree,  char __user * buf,
+ */
+static ssize_t ft_read(struct file *filep,  char __user *buf,
 		size_t count, loff_t *offset)
 {
 	int ret = 0;
@@ -91,9 +94,8 @@ static ssize_t ft_read(struct file *tree,  char __user * buf,
 	if (count <= *offset)
 		return 0;
 	ret = copy_to_user(buf, "gchopin\n", 8);
-	if (ret) {
+	if (ret)
 		return -EFAULT;
-	}
 	*offset += count;
 	return count;
 }
@@ -111,18 +113,21 @@ static size_t nb_len(unsigned long cpy)
 	return len;
 }
 
-static ssize_t read_jiffies(struct file *tree,  char __user * buf,
+static ssize_t read_jiffies(struct file *filep,  char __user *buf,
 		size_t count, loff_t *offset)
 {
 	unsigned long cpy = jiffies;
+	char *str;
+	int ret;
+
 	if (count <= *offset)
 		return 0;
-	char *str = kzalloc((nb_len(cpy) * sizeof(char)) + 2, GFP_KERNEL);
+	str = kzalloc((nb_len(cpy) * sizeof(char)) + 2, GFP_KERNEL);
 	if (!str)
 		return -EFAULT;
 	snprintf(str, nb_len(cpy) + 1, "%ld", cpy);
 	str[nb_len(cpy)] = '\n';
-	int ret = copy_to_user(buf, str, nb_len(cpy) + 1);
+	ret = copy_to_user(buf, str, nb_len(cpy) + 1);
 	if (ret) {
 		kfree(str);
 		return -EFAULT;
@@ -132,7 +137,7 @@ static ssize_t read_jiffies(struct file *tree,  char __user * buf,
 	return count;
 }
 
-static ssize_t ft_read_foo(struct file *tree,  char __user * buf,
+static ssize_t ft_read_foo(struct file *filep,  char __user *buf,
 		size_t count, loff_t *offset)
 {
 	int ret = 0;
@@ -178,7 +183,7 @@ const struct file_operations fops_foo = {
 
 /*
  * https://www.kernel.org/doc/Documentation/filesystems/debugfs.rst
-*/
+ */
 static int init_debugfs_file(const char *name, const umode_t mode,
 		struct dentry **d, const struct file_operations *f_op)
 {
@@ -186,7 +191,7 @@ static int init_debugfs_file(const char *name, const umode_t mode,
 		return 1;
 	*d = debugfs_create_file(name, mode, dentry_42, NULL, f_op);
 	if (!*d) {
-		printk(KERN_ERR "Couldn't initialize debugfs device.");
+		pr_err("Couldn't initialize debugfs device.");
 		if (ERR_PTR(-ENODEV))
 			return -ENODEV;
 		return -EINVAL;
@@ -196,14 +201,15 @@ static int init_debugfs_file(const char *name, const umode_t mode,
 
 /*
  * https://www.kernel.org/doc/Documentation/filesystems/debugfs.rst
-*/
+ */
 static int __init init_hello(void)
 {
 	int res = 0;
 
+	page_value = NULL;
 	dentry_42 = debugfs_create_dir("fortytwo", NULL);
 	if (!dentry_42) {
-		printk(KERN_ERR "Couldn't initialize fortytwo directory.");
+		pr_err("Couldn't initialize fortytwo directory.");
 		if (ERR_PTR(-ENODEV))
 			return -ENODEV;
 		return -EINVAL;
@@ -221,7 +227,7 @@ static int __init init_hello(void)
 	page_value = alloc_page(GFP_KERNEL);
 	if (!page_value)
 		return -ENOMEM;
-	printk(KERN_INFO "Hello world !\n");
+	pr_info("Hello world !\n");
 	return 0;
 }
 
@@ -229,15 +235,11 @@ static void __exit exit_hello(void)
 {
 	if (page_value)
 		__free_page(page_value);
-	if (dentry_id)
-		debugfs_remove(dentry_id);
-	if (dentry_jiffies)
-		debugfs_remove(dentry_jiffies);
-	if (dentry_foo)
-		debugfs_remove(dentry_foo);
-	if (dentry_42)
-		debugfs_remove(dentry_42);
-	printk(KERN_INFO "Cleaning up module.\n");
+	debugfs_remove(dentry_id);
+	debugfs_remove(dentry_jiffies);
+	debugfs_remove(dentry_foo);
+	debugfs_remove(dentry_42);
+	pr_info("Cleaning up module.\n");
 }
 
 module_init(init_hello);

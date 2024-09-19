@@ -1,13 +1,14 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/delay.h>
 #include <linux/slab.h>
 
-MODULE_LICENSE("42");
+MODULE_LICENSE("GPL");
 
 /*
  * Tell userspace about long sleep
-*/
+ */
 static void sleep_info(void)
 {
 	pr_info("We slept a long time!");
@@ -38,7 +39,6 @@ static int my_init(void)
 
 static void	my_exit(void)
 {
-	return ;
 }
 
 module_init(my_init);

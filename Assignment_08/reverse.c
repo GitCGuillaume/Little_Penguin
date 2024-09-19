@@ -28,7 +28,7 @@ DEFINE_MUTEX(lock);
 static ssize_t my_fd_read(struct file *fp, char __user *user,
 		size_t size, loff_t *offs)
 {
-	ssize_t t, i;
+	ssize_t i, j;
 	ssize_t res;
 	char *tmp;
 
@@ -36,19 +36,17 @@ static ssize_t my_fd_read(struct file *fp, char __user *user,
 		return 0;
 	if (mutex_lock_interruptible(&lock))
 		return -EINTR;
-	tmp = kmalloc(sizeof(char) * PAGE_SIZE, GFP_KERNEL);
+	j = strlen(str);
+	tmp = kmalloc(sizeof(char) * (j + 1), GFP_KERNEL);
 	if (!tmp)
 		return -EFAULT;
-	for (t = strlen(str) - 1, i = 0; t >= 0; t--, i++)
-		tmp[i] = str[t];
-	tmp[i] = 0x0;
+	for (j = j - 1, i = 0; j >= 0; j--, i++)
+		tmp[i] = str[j];
+	tmp[i] = 0;
 	res = simple_read_from_buffer(user, size, offs, tmp, i);
 	kfree(tmp);
 	tmp = 0;
 	mutex_unlock(&lock);
-	//pas besoin
-	//if (res < 0)
-	//	return -EFAULT;
 	return res;
 }
 
@@ -65,13 +63,6 @@ static ssize_t my_fd_write(struct file *fp, const char __user *user,
 		return -EINTR;
 	memset(str, 0, PAGE_SIZE);
 	res = simple_write_to_buffer(str, PAGE_SIZE, offs, user, size);
-	//pas besoin
-	//if (res < 0) {
-	//	memset(str, 0, PAGE_SIZE);
-	//	mutex_unlock(&lock);
-	//	return -EFAULT;
-	//}
-	str[res] = '\0';
 	mutex_unlock(&lock);
 	return res;
 }

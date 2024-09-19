@@ -5,16 +5,13 @@
 #include <linux/nsproxy.h>
 #include <../fs/mount.h>
 
-struct	proc_dir_entry *proc_mymounts = NULL;
-void	recursive_name(struct seq_file *file, struct mount *mnt);
-int	show (struct seq_file *m, void *v);
-int	ft_proc_open(struct inode *inode, struct file *file);
+struct	proc_dir_entry *proc_mymounts;
 static	DECLARE_RWSEM(namespace_sem);
 
 /*
  * https://docs.kernel.org/filesystems/seq_file.html
-*/
-void	recursive_name(struct seq_file *file, struct mount *mnt)
+ */
+static void	recursive_name(struct seq_file *file, struct mount *mnt)
 {
 	struct path show_path;
 
@@ -30,7 +27,7 @@ void	recursive_name(struct seq_file *file, struct mount *mnt)
 	seq_putc(file, '\n');
 }
 
-int show (struct seq_file *file, void *private)
+static int show(struct seq_file *file, void *private)
 {
 	down_read(&namespace_sem);
 	struct mnt_namespace *mnt_ns = current->nsproxy->mnt_ns;
@@ -48,7 +45,7 @@ int show (struct seq_file *file, void *private)
 	return 0;
 }
 
-int	ft_proc_open(struct inode *inode, struct file *file)
+static int	ft_proc_open(struct inode *inode, struct file *file)
 {
 	return single_open(file, show, NULL);
 }
