@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 #include <linux/module.h>
-#include <linux/proc_fs.h>
 #include <linux/kernel.h>
+#include <linux/proc_fs.h>
 #include <linux/nsproxy.h>
 #include <../fs/mount.h>
 
@@ -58,7 +58,7 @@ const struct proc_ops p_ops = {
 
 static int __init init_mymounts(void)
 {
-	proc_mymounts = proc_create("mymounts", 0600, NULL, &p_ops);
+	proc_mymounts = proc_create("mymounts", 0444, NULL, &p_ops);
 	if (!proc_mymounts)
 		return -ENOMEM;
 	return 0;
