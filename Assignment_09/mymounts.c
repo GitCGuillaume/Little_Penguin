@@ -11,7 +11,7 @@ static	DECLARE_RWSEM(namespace_sem);
 /*
  * https://docs.kernel.org/filesystems/seq_file.html
  */
-static void	recursive_name(struct seq_file *file, struct mount *mnt)
+static void	show_device_info(struct seq_file *file, struct mount *mnt)
 {
 	struct path show_path;
 
@@ -22,8 +22,8 @@ static void	recursive_name(struct seq_file *file, struct mount *mnt)
 	if (mnt->mnt_parent) {
 		show_path.mnt = &mnt->mnt_parent->mnt;
 		show_path.dentry = mnt->mnt_mountpoint;
-		seq_path(file, &show_path, "");
 	}
+	seq_path(file, &show_path, "");
 	seq_putc(file, '\n');
 }
 
@@ -39,7 +39,7 @@ static int show(struct seq_file *file, void *private)
 		mnt = rb_entry_safe(rb_next(&mnt->mnt_node),
 			struct mount, mnt_node)) {
 		if (strcmp(mnt->mnt_devname, "rootfs") != 0)
-			recursive_name(file, mnt);
+			show_device_info(file, mnt);
 	}
 	up_read(&namespace_sem);
 	return 0;
