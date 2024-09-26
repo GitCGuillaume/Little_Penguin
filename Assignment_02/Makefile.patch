@@ -6,15 +6,15 @@ EXTRAVERSION name updated
 Signed-off-by: Guillaume Chopin <gchopin@student.42.fr>
 ---
 diff --git a/Makefile b/Makefile
-index e6544066e70e..93ce21da9708 100644
+index 8b0ba00345ca..8532253377b6 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -2,7 +2,7 @@
  VERSION = 6
  PATCHLEVEL = 11
  SUBLEVEL = 0
--EXTRAVERSION = -rc5-gchopin
-+EXTRAVERSION = -rc5-gchopin-thor_kernel
+-EXTRAVERSION = -gchopin
++EXTRAVERSION = -gchopin-thor_kernel
  NAME = Baby Opossum Posse
  
  # *DOCUMENTATION*
