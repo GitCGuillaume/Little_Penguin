@@ -1,0 +1,718 @@
+Sep 26 14:24:07 gchopin kernel: klogd 1.5.1, log source = /proc/kmsg started.
+Sep 26 14:24:07 gchopin kernel: Inspecting /boot/System.map
+Sep 26 14:24:07 gchopin kernel: Cannot find map file.
+Sep 26 14:24:07 gchopin kernel: Loaded 151666 symbols from 4 modules.
+Sep 26 14:24:07 gchopin kernel: [    0.000000] Linux version 6.7.4-gchopin (root@gchopin) (gcc (GCC) 13.2.0, GNU ld (GNU Binutils) 2.41) #18 SMP PREEMPT_DYNAMIC Fri Aug  2 13:31:16 CEST 2024
+Sep 26 14:24:07 gchopin kernel: [    0.000000] Command line: BOOT_IMAGE=/vmlinuz-6.7.4-gchopin root=PARTUUID=643facfc-03 ro
+Sep 26 14:24:07 gchopin kernel: [    0.000000] BIOS-provided physical RAM map:
+Sep 26 14:24:07 gchopin kernel: [    0.000000] BIOS-e820: [mem 0x0000000000000000-0x000000000009fbff] usable
+Sep 26 14:24:07 gchopin kernel: [    0.000000] BIOS-e820: [mem 0x000000000009fc00-0x000000000009ffff] reserved
+Sep 26 14:24:07 gchopin kernel: [    0.000000] BIOS-e820: [mem 0x00000000000f0000-0x00000000000fffff] reserved
+Sep 26 14:24:07 gchopin kernel: [    0.000000] BIOS-e820: [mem 0x0000000000100000-0x000000007ffdbfff] usable
+Sep 26 14:24:07 gchopin kernel: [    0.000000] BIOS-e820: [mem 0x000000007ffdc000-0x000000007fffffff] reserved
+Sep 26 14:24:07 gchopin kernel: [    0.000000] BIOS-e820: [mem 0x00000000b0000000-0x00000000bfffffff] reserved
+Sep 26 14:24:07 gchopin kernel: [    0.000000] BIOS-e820: [mem 0x00000000fed1c000-0x00000000fed1ffff] reserved
+Sep 26 14:24:07 gchopin kernel: [    0.000000] BIOS-e820: [mem 0x00000000feffc000-0x00000000feffffff] reserved
+Sep 26 14:24:07 gchopin kernel: [    0.000000] BIOS-e820: [mem 0x00000000fffc0000-0x00000000ffffffff] reserved
+Sep 26 14:24:07 gchopin kernel: [    0.000000] BIOS-e820: [mem 0x0000000100000000-0x00000002ffffffff] usable
+Sep 26 14:24:07 gchopin kernel: [    0.000000] NX (Execute Disable) protection: active
+Sep 26 14:24:07 gchopin kernel: [    0.000000] APIC: Static calls initialized
+Sep 26 14:24:07 gchopin kernel: [    0.000000] SMBIOS 2.8 present.
+Sep 26 14:24:07 gchopin kernel: [    0.000000] DMI: QEMU Standard PC (Q35 + ICH9, 2009), BIOS 1.15.0-1 04/01/2014
+Sep 26 14:24:07 gchopin kernel: [    0.000000] Hypervisor detected: KVM
+Sep 26 14:24:07 gchopin kernel: [    0.000000] kvm-clock: Using msrs 4b564d01 and 4b564d00
+Sep 26 14:24:07 gchopin kernel: [    0.000000] kvm-clock: using sched offset of 2066600572513 cycles
+Sep 26 14:24:07 gchopin kernel: [    0.000001] clocksource: kvm-clock: mask: 0xffffffffffffffff max_cycles: 0x1cd42e4dffb, max_idle_ns: 881590591483 ns
+Sep 26 14:24:07 gchopin kernel: [    0.000003] tsc: Detected 2112.000 MHz processor
+Sep 26 14:24:07 gchopin kernel: [    0.000414] e820: update [mem 0x00000000-0x00000fff] usable ==> reserved
+Sep 26 14:24:07 gchopin kernel: [    0.000416] e820: remove [mem 0x000a0000-0x000fffff] usable
+Sep 26 14:24:07 gchopin kernel: [    0.000418] last_pfn = 0x300000 max_arch_pfn = 0x400000000
+Sep 26 14:24:07 gchopin kernel: [    0.000438] MTRR map: 4 entries (3 fixed + 1 variable; max 19), built from 8 variable MTRRs
+Sep 26 14:24:07 gchopin kernel: [    0.000440] x86/PAT: Configuration [0-7]: WB  WC  UC- UC  WB  WP  UC- WT  
+Sep 26 14:24:07 gchopin kernel: [    0.000464] last_pfn = 0x7ffdc max_arch_pfn = 0x400000000
+Sep 26 14:24:07 gchopin kernel: [    0.002498] found SMP MP-table at [mem 0x000f5af0-0x000f5aff]
+Sep 26 14:24:07 gchopin kernel: [    0.002503] Using GB pages for direct mapping
+Sep 26 14:24:07 gchopin kernel: [    0.002503] Incomplete global flushes, disabling PCID
+Sep 26 14:24:07 gchopin kernel: [    0.002530] ACPI: Early table checksum verification disabled
+Sep 26 14:24:07 gchopin kernel: [    0.002531] ACPI: RSDP 0x00000000000F5AB0 000014 (v00 BOCHS )
+Sep 26 14:24:07 gchopin kernel: [    0.002535] ACPI: RSDT 0x000000007FFE2903 000034 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+Sep 26 14:24:07 gchopin kernel: [    0.002538] ACPI: FACP 0x000000007FFE26FB 0000F4 (v03 BOCHS  BXPC     00000001 BXPC 00000001)
+Sep 26 14:24:07 gchopin kernel: [    0.002542] ACPI: DSDT 0x000000007FFDFCC0 002A3B (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+Sep 26 14:24:07 gchopin kernel: [    0.002544] ACPI: FACS 0x000000007FFDFC80 000040
+Sep 26 14:24:07 gchopin kernel: [    0.002545] ACPI: APIC 0x000000007FFE27EF 0000B0 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+Sep 26 14:24:07 gchopin kernel: [    0.002546] ACPI: MCFG 0x000000007FFE289F 00003C (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+Sep 26 14:24:07 gchopin kernel: [    0.002547] ACPI: WAET 0x000000007FFE28DB 000028 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+Sep 26 14:24:07 gchopin kernel: [    0.002548] ACPI: Reserving FACP table memory at [mem 0x7ffe26fb-0x7ffe27ee]
+Sep 26 14:24:07 gchopin kernel: [    0.002549] ACPI: Reserving DSDT table memory at [mem 0x7ffdfcc0-0x7ffe26fa]
+Sep 26 14:24:07 gchopin kernel: [    0.002549] ACPI: Reserving FACS table memory at [mem 0x7ffdfc80-0x7ffdfcbf]
+Sep 26 14:24:07 gchopin kernel: [    0.002550] ACPI: Reserving APIC table memory at [mem 0x7ffe27ef-0x7ffe289e]
+Sep 26 14:24:07 gchopin kernel: [    0.002550] ACPI: Reserving MCFG table memory at [mem 0x7ffe289f-0x7ffe28da]
+Sep 26 14:24:07 gchopin kernel: [    0.002551] ACPI: Reserving WAET table memory at [mem 0x7ffe28db-0x7ffe2902]
+Sep 26 14:24:07 gchopin kernel: [    0.002697] No NUMA configuration found
+Sep 26 14:24:07 gchopin kernel: [    0.002698] Faking a node at [mem 0x0000000000000000-0x00000002ffffffff]
+Sep 26 14:24:07 gchopin kernel: [    0.002699] NODE_DATA(0) allocated [mem 0x2ffffc000-0x2ffffffff]
+Sep 26 14:24:07 gchopin kernel: [    0.002735] Zone ranges:
+Sep 26 14:24:07 gchopin kernel: [    0.002735]   DMA      [mem 0x0000000000001000-0x0000000000ffffff]
+Sep 26 14:24:07 gchopin kernel: [    0.002736]   DMA32    [mem 0x0000000001000000-0x00000000ffffffff]
+Sep 26 14:24:07 gchopin kernel: [    0.002737]   Normal   [mem 0x0000000100000000-0x00000002ffffffff]
+Sep 26 14:24:07 gchopin kernel: [    0.002738] Movable zone start for each node
+Sep 26 14:24:07 gchopin kernel: [    0.002739] Early memory node ranges
+Sep 26 14:24:07 gchopin kernel: [    0.002739]   node   0: [mem 0x0000000000001000-0x000000000009efff]
+Sep 26 14:24:07 gchopin kernel: [    0.002740]   node   0: [mem 0x0000000000100000-0x000000007ffdbfff]
+Sep 26 14:24:07 gchopin kernel: [    0.002740]   node   0: [mem 0x0000000100000000-0x00000002ffffffff]
+Sep 26 14:24:07 gchopin kernel: [    0.002741] Initmem setup node 0 [mem 0x0000000000001000-0x00000002ffffffff]
+Sep 26 14:24:07 gchopin kernel: [    0.002745] On node 0, zone DMA: 1 pages in unavailable ranges
+Sep 26 14:24:07 gchopin kernel: [    0.002767] On node 0, zone DMA: 97 pages in unavailable ranges
+Sep 26 14:24:07 gchopin kernel: [    0.022324] On node 0, zone Normal: 36 pages in unavailable ranges
+Sep 26 14:24:07 gchopin kernel: [    0.023097] ACPI: PM-Timer IO Port: 0x608
+Sep 26 14:24:07 gchopin kernel: [    0.023103] ACPI: LAPIC_NMI (acpi_id[0xff] dfl dfl lint[0x1])
+Sep 26 14:24:07 gchopin kernel: [    0.023122] IOAPIC[0]: apic_id 0, version 17, address 0xfec00000, GSI 0-23
+Sep 26 14:24:07 gchopin kernel: [    0.023124] ACPI: INT_SRC_OVR (bus 0 bus_irq 0 global_irq 2 dfl dfl)
+Sep 26 14:24:07 gchopin kernel: [    0.023125] ACPI: INT_SRC_OVR (bus 0 bus_irq 5 global_irq 5 high level)
+Sep 26 14:24:07 gchopin kernel: [    0.023126] ACPI: INT_SRC_OVR (bus 0 bus_irq 9 global_irq 9 high level)
+Sep 26 14:24:07 gchopin kernel: [    0.023126] ACPI: INT_SRC_OVR (bus 0 bus_irq 10 global_irq 10 high level)
+Sep 26 14:24:07 gchopin kernel: [    0.023127] ACPI: INT_SRC_OVR (bus 0 bus_irq 11 global_irq 11 high level)
+Sep 26 14:24:07 gchopin kernel: [    0.023128] ACPI: Using ACPI (MADT) for SMP configuration information
+Sep 26 14:24:07 gchopin kernel: [    0.023129] TSC deadline timer available
+Sep 26 14:24:07 gchopin kernel: [    0.023129] smpboot: Allowing 8 CPUs, 0 hotplug CPUs
+Sep 26 14:24:07 gchopin kernel: [    0.023138] kvm-guest: APIC: eoi() replaced with kvm_guest_apic_eoi_write()
+Sep 26 14:24:07 gchopin kernel: [    0.023148] kvm-guest: KVM setup pv remote TLB flush
+Sep 26 14:24:07 gchopin kernel: [    0.023151] kvm-guest: setup PV sched yield
+Sep 26 14:24:07 gchopin kernel: [    0.023154] PM: hibernation: Registered nosave memory: [mem 0x00000000-0x00000fff]
+Sep 26 14:24:07 gchopin kernel: [    0.023155] PM: hibernation: Registered nosave memory: [mem 0x0009f000-0x0009ffff]
+Sep 26 14:24:07 gchopin kernel: [    0.023156] PM: hibernation: Registered nosave memory: [mem 0x000a0000-0x000effff]
+Sep 26 14:24:07 gchopin kernel: [    0.023156] PM: hibernation: Registered nosave memory: [mem 0x000f0000-0x000fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.023156] PM: hibernation: Registered nosave memory: [mem 0x7ffdc000-0x7fffffff]
+Sep 26 14:24:07 gchopin kernel: [    0.023157] PM: hibernation: Registered nosave memory: [mem 0x80000000-0xafffffff]
+Sep 26 14:24:07 gchopin kernel: [    0.023157] PM: hibernation: Registered nosave memory: [mem 0xb0000000-0xbfffffff]
+Sep 26 14:24:07 gchopin kernel: [    0.023158] PM: hibernation: Registered nosave memory: [mem 0xc0000000-0xfed1bfff]
+Sep 26 14:24:07 gchopin kernel: [    0.023158] PM: hibernation: Registered nosave memory: [mem 0xfed1c000-0xfed1ffff]
+Sep 26 14:24:07 gchopin kernel: [    0.023158] PM: hibernation: Registered nosave memory: [mem 0xfed20000-0xfeffbfff]
+Sep 26 14:24:07 gchopin kernel: [    0.023159] PM: hibernation: Registered nosave memory: [mem 0xfeffc000-0xfeffffff]
+Sep 26 14:24:07 gchopin kernel: [    0.023159] PM: hibernation: Registered nosave memory: [mem 0xff000000-0xfffbffff]
+Sep 26 14:24:07 gchopin kernel: [    0.023159] PM: hibernation: Registered nosave memory: [mem 0xfffc0000-0xffffffff]
+Sep 26 14:24:07 gchopin kernel: [    0.023160] [mem 0xc0000000-0xfed1bfff] available for PCI devices
+Sep 26 14:24:07 gchopin kernel: [    0.023160] Booting paravirtualized kernel on KVM
+Sep 26 14:24:07 gchopin kernel: [    0.023161] clocksource: refined-jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 1910969940391419 ns
+Sep 26 14:24:07 gchopin kernel: [    0.026437] setup_percpu: NR_CPUS:64 nr_cpumask_bits:8 nr_cpu_ids:8 nr_node_ids:1
+Sep 26 14:24:07 gchopin kernel: [    0.027530] percpu: Embedded 54 pages/cpu s183336 r8192 d29656 u262144
+Sep 26 14:24:07 gchopin kernel: [    0.027533] pcpu-alloc: s183336 r8192 d29656 u262144 alloc=1*2097152
+Sep 26 14:24:07 gchopin kernel: [    0.027535] pcpu-alloc: [0] 0 1 2 3 4 5 6 7 
+Sep 26 14:24:07 gchopin kernel: [    0.027552] Kernel command line: BOOT_IMAGE=/vmlinuz-6.7.4-gchopin root=PARTUUID=643facfc-03 ro
+Sep 26 14:24:07 gchopin kernel: [    0.027567] Unknown kernel command line parameters "BOOT_IMAGE=/vmlinuz-6.7.4-gchopin", will be passed to user space.
+Sep 26 14:24:07 gchopin kernel: [    0.027582] random: crng init done
+Sep 26 14:24:07 gchopin kernel: [    0.033190] Dentry cache hash table entries: 2097152 (order: 12, 16777216 bytes, linear)
+Sep 26 14:24:07 gchopin kernel: [    0.035894] Inode-cache hash table entries: 1048576 (order: 11, 8388608 bytes, linear)
+Sep 26 14:24:07 gchopin kernel: [    0.035968] Fallback order for Node 0: 0 
+Sep 26 14:24:07 gchopin kernel: [    0.035970] Built 1 zonelists, mobility grouping on.  Total pages: 2580188
+Sep 26 14:24:07 gchopin kernel: [    0.035971] Policy zone: Normal
+Sep 26 14:24:07 gchopin kernel: [    0.035971] mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+Sep 26 14:24:07 gchopin kernel: [    0.035974] software IO TLB: area num 8.
+Sep 26 14:24:07 gchopin kernel: [    0.104601] Memory: 10192876K/10485224K available (16384K kernel code, 2544K rwdata, 5716K rodata, 2536K init, 2440K bss, 292088K reserved, 0K cma-reserved)
+Sep 26 14:24:07 gchopin kernel: [    0.104641] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=8, Nodes=1
+Sep 26 14:24:07 gchopin kernel: [    0.105297] Dynamic Preempt: voluntary
+Sep 26 14:24:07 gchopin kernel: [    0.105347] rcu: Preemptible hierarchical RCU implementation.
+Sep 26 14:24:07 gchopin kernel: [    0.105347] rcu: ^IRCU event tracing is enabled.
+Sep 26 14:24:07 gchopin kernel: [    0.105347] rcu: ^IRCU restricting CPUs from NR_CPUS=64 to nr_cpu_ids=8.
+Sep 26 14:24:07 gchopin kernel: [    0.105348] ^ITrampoline variant of Tasks RCU enabled.
+Sep 26 14:24:07 gchopin kernel: [    0.105349] rcu: RCU calculated value of scheduler-enlistment delay is 100 jiffies.
+Sep 26 14:24:07 gchopin kernel: [    0.105349] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=8
+Sep 26 14:24:07 gchopin kernel: [    0.106027] NR_IRQS: 4352, nr_irqs: 488, preallocated irqs: 16
+Sep 26 14:24:07 gchopin kernel: [    0.106208] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+Sep 26 14:24:07 gchopin kernel: [    0.110254] Console: colour VGA+ 80x25
+Sep 26 14:24:07 gchopin kernel: [    0.110255] printk: legacy console [tty0] enabled
+Sep 26 14:24:07 gchopin kernel: [    0.128424] ACPI: Core revision 20230628
+Sep 26 14:24:07 gchopin kernel: [    0.128563] APIC: Switch to symmetric I/O mode setup
+Sep 26 14:24:07 gchopin kernel: [    0.128816] x2apic enabled
+Sep 26 14:24:07 gchopin kernel: [    0.129071] APIC: Switched APIC routing to: physical x2apic
+Sep 26 14:24:07 gchopin kernel: [    0.129209] kvm-guest: APIC: send_IPI_mask() replaced with kvm_send_ipi_mask()
+Sep 26 14:24:07 gchopin kernel: [    0.129392] kvm-guest: APIC: send_IPI_mask_allbutself() replaced with kvm_send_ipi_mask_allbutself()
+Sep 26 14:24:07 gchopin kernel: [    0.129605] kvm-guest: setup PV IPIs
+Sep 26 14:24:07 gchopin kernel: [    0.130217] clocksource: tsc-early: mask: 0xffffffffffffffff max_cycles: 0x1e71785e5dd, max_idle_ns: 440795244814 ns
+Sep 26 14:24:07 gchopin kernel: [    0.130448] Calibrating delay loop (skipped) preset value.. 4224.00 BogoMIPS (lpj=2112000)
+Sep 26 14:24:07 gchopin kernel: [    0.130724] x86/cpu: User Mode Instruction Prevention (UMIP) activated
+Sep 26 14:24:07 gchopin kernel: [    0.130921] Last level iTLB entries: 4KB 0, 2MB 0, 4MB 0
+Sep 26 14:24:07 gchopin kernel: [    0.131055] Last level dTLB entries: 4KB 0, 2MB 0, 4MB 0, 1GB 0
+Sep 26 14:24:07 gchopin kernel: [    0.131204] Spectre V1 : Mitigation: usercopy/swapgs barriers and __user pointer sanitization
+Sep 26 14:24:07 gchopin kernel: [    0.131413] Spectre V2 : Mitigation: Enhanced / Automatic IBRS
+Sep 26 14:24:07 gchopin kernel: [    0.131445] Spectre V2 : Spectre v2 / SpectreRSB mitigation: Filling RSB on context switch
+Sep 26 14:24:07 gchopin kernel: [    0.131445] Spectre V2 : Spectre v2 / PBRSB-eIBRS: Retire a single CALL on VMEXIT
+Sep 26 14:24:07 gchopin kernel: [    0.131445] Spectre V2 : mitigation: Enabling conditional Indirect Branch Prediction Barrier
+Sep 26 14:24:07 gchopin kernel: [    0.131445] Speculative Store Bypass: Mitigation: Speculative Store Bypass disabled via prctl
+Sep 26 14:24:07 gchopin kernel: [    0.131445] x86/fpu: Supporting XSAVE feature 0x001: 'x87 floating point registers'
+Sep 26 14:24:07 gchopin kernel: [    0.131445] x86/fpu: Supporting XSAVE feature 0x002: 'SSE registers'
+Sep 26 14:24:07 gchopin kernel: [    0.131445] x86/fpu: Supporting XSAVE feature 0x004: 'AVX registers'
+Sep 26 14:24:07 gchopin kernel: [    0.131445] x86/fpu: Supporting XSAVE feature 0x200: 'Protection Keys User registers'
+Sep 26 14:24:07 gchopin kernel: [    0.131445] x86/fpu: xstate_offset[2]:  576, xstate_sizes[2]:  256
+Sep 26 14:24:07 gchopin kernel: [    0.131445] x86/fpu: xstate_offset[9]:  832, xstate_sizes[9]:    8
+Sep 26 14:24:07 gchopin kernel: [    0.131445] x86/fpu: Enabled xstate features 0x207, context size is 840 bytes, using 'compacted' format.
+Sep 26 14:24:07 gchopin kernel: [    0.131445] Freeing SMP alternatives memory: 44K
+Sep 26 14:24:07 gchopin kernel: [    0.131445] pid_max: default: 32768 minimum: 301
+Sep 26 14:24:07 gchopin kernel: [    0.131445] LSM: initializing lsm=capability,selinux,integrity
+Sep 26 14:24:07 gchopin kernel: [    0.131445] SELinux:  Initializing.
+Sep 26 14:24:07 gchopin kernel: [    0.131445] Mount-cache hash table entries: 32768 (order: 6, 262144 bytes, linear)
+Sep 26 14:24:07 gchopin kernel: [    0.131445] Mountpoint-cache hash table entries: 32768 (order: 6, 262144 bytes, linear)
+Sep 26 14:24:07 gchopin kernel: [    0.131445] smpboot: CPU0: 12th Gen Intel(R) Core(TM) i7-12700 (family: 0x6, model: 0x97, stepping: 0x2)
+Sep 26 14:24:07 gchopin kernel: [    0.131445] RCU Tasks: Setting shift to 3 and lim to 1 rcu_task_cb_adjust=1.
+Sep 26 14:24:07 gchopin kernel: [    0.131445] Performance Events: Alderlake Hybrid events, full-width counters, Intel PMU driver.
+Sep 26 14:24:07 gchopin kernel: [    0.131445] core: cpu_core PMU driver: 
+Sep 26 14:24:07 gchopin kernel: [    0.131448] ... version:                2
+Sep 26 14:24:07 gchopin kernel: [    0.131569] ... bit width:              48
+Sep 26 14:24:07 gchopin kernel: [    0.131693] ... generic registers:      6
+Sep 26 14:24:07 gchopin kernel: [    0.131814] ... value mask:             0000ffffffffffff
+Sep 26 14:24:07 gchopin kernel: [    0.131954] ... max period:             00007fffffffffff
+Sep 26 14:24:07 gchopin kernel: [    0.132095] ... fixed-purpose events:   3
+Sep 26 14:24:07 gchopin kernel: [    0.132219] ... event mask:             000100070000003f
+Sep 26 14:24:07 gchopin kernel: [    0.132376] signal: max sigframe size: 3632
+Sep 26 14:24:07 gchopin kernel: [    0.132493] rcu: Hierarchical SRCU implementation.
+Sep 26 14:24:07 gchopin kernel: [    0.132629] rcu: ^IMax phase no-delay instances is 400.
+Sep 26 14:24:07 gchopin kernel: [    0.132978] smp: Bringing up secondary CPUs ...
+Sep 26 14:24:07 gchopin kernel: [    0.133216] smpboot: x86: Booting SMP configuration:
+Sep 26 14:24:07 gchopin kernel: [    0.133356] .... node  #0, CPUs:      #1 #2 #3 #4 #5 #6 #7
+Sep 26 14:24:07 gchopin kernel: [    0.025232] smpboot: CPU 1 Converting physical 0 to logical die 1
+Sep 26 14:24:07 gchopin kernel: [    0.025232] smpboot: CPU 2 Converting physical 0 to logical die 2
+Sep 26 14:24:07 gchopin kernel: [    0.025232] smpboot: CPU 3 Converting physical 0 to logical die 3
+Sep 26 14:24:07 gchopin kernel: [    0.025232] smpboot: CPU 4 Converting physical 0 to logical die 4
+Sep 26 14:24:07 gchopin kernel: [    0.025232] smpboot: CPU 5 Converting physical 0 to logical die 5
+Sep 26 14:24:07 gchopin kernel: [    0.025232] smpboot: CPU 6 Converting physical 0 to logical die 6
+Sep 26 14:24:07 gchopin kernel: [    0.025232] smpboot: CPU 7 Converting physical 0 to logical die 7
+Sep 26 14:24:07 gchopin kernel: [    0.141751] smp: Brought up 1 node, 8 CPUs
+Sep 26 14:24:07 gchopin kernel: [    0.142998] smpboot: Max logical packages: 8
+Sep 26 14:24:07 gchopin kernel: [    0.143134] smpboot: Total of 8 processors activated (33792.00 BogoMIPS)
+Sep 26 14:24:07 gchopin kernel: [    0.144508] devtmpfs: initialized
+Sep 26 14:24:07 gchopin kernel: [    0.144659] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 1911260446275000 ns
+Sep 26 14:24:07 gchopin kernel: [    0.144696] futex hash table entries: 2048 (order: 5, 131072 bytes, linear)
+Sep 26 14:24:07 gchopin kernel: [    0.144959] PM: RTC time: 12:24:04, date: 2024-09-26
+Sep 26 14:24:07 gchopin kernel: [    0.145640] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+Sep 26 14:24:07 gchopin kernel: [    0.145833] audit: initializing netlink subsys (disabled)
+Sep 26 14:24:07 gchopin kernel: [    0.146004] audit: type=2000 audit(1727353443.959:1): state=initialized audit_enabled=0 res=1
+Sep 26 14:24:07 gchopin kernel: [    0.146004] thermal_sys: Registered thermal governor 'step_wise'
+Sep 26 14:24:07 gchopin kernel: [    0.146004] thermal_sys: Registered thermal governor 'user_space'
+Sep 26 14:24:07 gchopin kernel: [    0.146451] cpuidle: using governor menu
+Sep 26 14:24:07 gchopin kernel: [    0.146918] PCI: MMCONFIG for domain 0000 [bus 00-ff] at [mem 0xb0000000-0xbfffffff] (base 0xb0000000)
+Sep 26 14:24:07 gchopin kernel: [    0.147135] PCI: MMCONFIG at [mem 0xb0000000-0xbfffffff] reserved as E820 entry
+Sep 26 14:24:07 gchopin kernel: [    0.147321] PCI: Using configuration type 1 for base access
+Sep 26 14:24:07 gchopin kernel: [    0.147568] kprobes: kprobe jump-optimization is enabled. All kprobes are optimized if possible.
+Sep 26 14:24:07 gchopin kernel: [    0.151943] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
+Sep 26 14:24:07 gchopin kernel: [    0.152114] HugeTLB: 28 KiB vmemmap can be freed for a 2.00 MiB page
+Sep 26 14:24:07 gchopin kernel: [    0.152487] ACPI: Added _OSI(Module Device)
+Sep 26 14:24:07 gchopin kernel: [    0.152617] ACPI: Added _OSI(Processor Device)
+Sep 26 14:24:07 gchopin kernel: [    0.152741] ACPI: Added _OSI(3.0 _SCP Extensions)
+Sep 26 14:24:07 gchopin kernel: [    0.152869] ACPI: Added _OSI(Processor Aggregator Device)
+Sep 26 14:24:07 gchopin kernel: [    0.153497] ACPI: 1 ACPI AML tables successfully acquired and loaded
+Sep 26 14:24:07 gchopin kernel: [    0.158853] ACPI: _OSC evaluation for CPUs failed, trying _PDC
+Sep 26 14:24:07 gchopin kernel: [    0.159058] ACPI: Interpreter enabled
+Sep 26 14:24:07 gchopin kernel: [    0.159181] ACPI: PM: (supports S0 S5)
+Sep 26 14:24:07 gchopin kernel: [    0.159298] ACPI: Using IOAPIC for interrupt routing
+Sep 26 14:24:07 gchopin kernel: [    0.159443] PCI: Using host bridge windows from ACPI; if necessary, use "pci=nocrs" and report a bug
+Sep 26 14:24:07 gchopin kernel: [    0.159446] PCI: Using E820 reservations for host bridge windows
+Sep 26 14:24:07 gchopin kernel: [    0.159633] ACPI: Enabled 2 GPEs in block 00 to 3F
+Sep 26 14:24:07 gchopin kernel: [    0.160793] ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-ff])
+Sep 26 14:24:07 gchopin kernel: [    0.160954] acpi PNP0A08:00: _OSC: OS supports [ExtendedConfig ASPM ClockPM Segments MSI HPX-Type3]
+Sep 26 14:24:07 gchopin kernel: [    0.161195] acpi PNP0A08:00: _OSC: platform does not support [LTR]
+Sep 26 14:24:07 gchopin kernel: [    0.161366] acpi PNP0A08:00: _OSC: OS now controls [PME PCIeCapability]
+Sep 26 14:24:07 gchopin kernel: [    0.161479] PCI host bridge to bus 0000:00
+Sep 26 14:24:07 gchopin kernel: [    0.161602] pci_bus 0000:00: root bus resource [io  0x0000-0x0cf7 window]
+Sep 26 14:24:07 gchopin kernel: [    0.161769] pci_bus 0000:00: root bus resource [io  0x0d00-0xffff window]
+Sep 26 14:24:07 gchopin kernel: [    0.161934] pci_bus 0000:00: root bus resource [mem 0x000a0000-0x000bffff window]
+Sep 26 14:24:07 gchopin kernel: [    0.162135] pci_bus 0000:00: root bus resource [mem 0x80000000-0xafffffff window]
+Sep 26 14:24:07 gchopin kernel: [    0.162335] pci_bus 0000:00: root bus resource [mem 0xc0000000-0xfebfffff window]
+Sep 26 14:24:07 gchopin kernel: [    0.162446] pci_bus 0000:00: root bus resource [mem 0x300000000-0xaffffffff window]
+Sep 26 14:24:07 gchopin kernel: [    0.162650] pci_bus 0000:00: root bus resource [bus 00-ff]
+Sep 26 14:24:07 gchopin kernel: [    0.162819] pci 0000:00:00.0: [8086:29c0] type 00 class 0x060000
+Sep 26 14:24:07 gchopin kernel: [    0.163256] pci 0000:00:01.0: [1af4:1050] type 00 class 0x030000
+Sep 26 14:24:07 gchopin kernel: [    0.164454] pci 0000:00:01.0: reg 0x10: [mem 0xfa800000-0xfaffffff pref]
+Sep 26 14:24:07 gchopin kernel: [    0.167256] pci 0000:00:01.0: reg 0x18: [mem 0xfcc00000-0xfcc03fff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.168452] pci 0000:00:01.0: reg 0x20: [mem 0xfea14000-0xfea14fff]
+Sep 26 14:24:07 gchopin kernel: [    0.171990] pci 0000:00:01.0: reg 0x30: [mem 0xfea00000-0xfea0ffff pref]
+Sep 26 14:24:07 gchopin kernel: [    0.172229] pci 0000:00:01.0: Video device with shadowed ROM at [mem 0x000c0000-0x000dffff]
+Sep 26 14:24:07 gchopin kernel: [    0.172847] pci 0000:00:02.0: [1b36:000c] type 01 class 0x060400
+Sep 26 14:24:07 gchopin kernel: [    0.173785] pci 0000:00:02.0: reg 0x10: [mem 0xfea15000-0xfea15fff]
+Sep 26 14:24:07 gchopin kernel: [    0.175775] pci 0000:00:02.1: [1b36:000c] type 01 class 0x060400
+Sep 26 14:24:07 gchopin kernel: [    0.176740] pci 0000:00:02.1: reg 0x10: [mem 0xfea16000-0xfea16fff]
+Sep 26 14:24:07 gchopin kernel: [    0.178802] pci 0000:00:02.2: [1b36:000c] type 01 class 0x060400
+Sep 26 14:24:07 gchopin kernel: [    0.180447] pci 0000:00:02.2: reg 0x10: [mem 0xfea17000-0xfea17fff]
+Sep 26 14:24:07 gchopin kernel: [    0.182962] pci 0000:00:02.3: [1b36:000c] type 01 class 0x060400
+Sep 26 14:24:07 gchopin kernel: [    0.184175] pci 0000:00:02.3: reg 0x10: [mem 0xfea18000-0xfea18fff]
+Sep 26 14:24:07 gchopin kernel: [    0.186152] pci 0000:00:02.4: [1b36:000c] type 01 class 0x060400
+Sep 26 14:24:07 gchopin kernel: [    0.187190] pci 0000:00:02.4: reg 0x10: [mem 0xfea19000-0xfea19fff]
+Sep 26 14:24:07 gchopin kernel: [    0.189528] pci 0000:00:02.5: [1b36:000c] type 01 class 0x060400
+Sep 26 14:24:07 gchopin kernel: [    0.190983] pci 0000:00:02.5: reg 0x10: [mem 0xfea1a000-0xfea1afff]
+Sep 26 14:24:07 gchopin kernel: [    0.193109] pci 0000:00:02.6: [1b36:000c] type 01 class 0x060400
+Sep 26 14:24:07 gchopin kernel: [    0.194141] pci 0000:00:02.6: reg 0x10: [mem 0xfea1b000-0xfea1bfff]
+Sep 26 14:24:07 gchopin kernel: [    0.195947] pci 0000:00:02.7: [1b36:000c] type 01 class 0x060400
+Sep 26 14:24:07 gchopin kernel: [    0.197063] pci 0000:00:02.7: reg 0x10: [mem 0xfea1c000-0xfea1cfff]
+Sep 26 14:24:07 gchopin kernel: [    0.199000] pci 0000:00:03.0: [1b36:000c] type 01 class 0x060400
+Sep 26 14:24:07 gchopin kernel: [    0.200234] pci 0000:00:03.0: reg 0x10: [mem 0xfea1d000-0xfea1dfff]
+Sep 26 14:24:07 gchopin kernel: [    0.202946] pci 0000:00:03.1: [1b36:000c] type 01 class 0x060400
+Sep 26 14:24:07 gchopin kernel: [    0.203753] pci 0000:00:03.1: reg 0x10: [mem 0xfea1e000-0xfea1efff]
+Sep 26 14:24:07 gchopin kernel: [    0.205647] pci 0000:00:03.2: [1b36:000c] type 01 class 0x060400
+Sep 26 14:24:07 gchopin kernel: [    0.206447] pci 0000:00:03.2: reg 0x10: [mem 0xfea1f000-0xfea1ffff]
+Sep 26 14:24:07 gchopin kernel: [    0.208365] pci 0000:00:03.3: [1b36:000c] type 01 class 0x060400
+Sep 26 14:24:07 gchopin kernel: [    0.209447] pci 0000:00:03.3: reg 0x10: [mem 0xfea20000-0xfea20fff]
+Sep 26 14:24:07 gchopin kernel: [    0.213139] pci 0000:00:03.4: [1b36:000c] type 01 class 0x060400
+Sep 26 14:24:07 gchopin kernel: [    0.214935] pci 0000:00:03.4: reg 0x10: [mem 0xfea21000-0xfea21fff]
+Sep 26 14:24:07 gchopin kernel: [    0.216729] pci 0000:00:03.5: [1b36:000c] type 01 class 0x060400
+Sep 26 14:24:07 gchopin kernel: [    0.217746] pci 0000:00:03.5: reg 0x10: [mem 0xfea22000-0xfea22fff]
+Sep 26 14:24:07 gchopin kernel: [    0.219992] pci 0000:00:1b.0: [8086:293e] type 00 class 0x040300
+Sep 26 14:24:07 gchopin kernel: [    0.220663] pci 0000:00:1b.0: reg 0x10: [mem 0xfea10000-0xfea13fff]
+Sep 26 14:24:07 gchopin kernel: [    0.224046] pci 0000:00:1f.0: [8086:2918] type 00 class 0x060100
+Sep 26 14:24:07 gchopin kernel: [    0.224547] pci 0000:00:1f.0: quirk: [io  0x0600-0x067f] claimed by ICH6 ACPI/GPIO/TCO
+Sep 26 14:24:07 gchopin kernel: [    0.224993] pci 0000:00:1f.2: [8086:2922] type 00 class 0x010601
+Sep 26 14:24:07 gchopin kernel: [    0.227721] pci 0000:00:1f.2: reg 0x20: [io  0xc040-0xc05f]
+Sep 26 14:24:07 gchopin kernel: [    0.228416] pci 0000:00:1f.2: reg 0x24: [mem 0xfea23000-0xfea23fff]
+Sep 26 14:24:07 gchopin kernel: [    0.229167] pci 0000:00:1f.3: [8086:2930] type 00 class 0x0c0500
+Sep 26 14:24:07 gchopin kernel: [    0.230744] pci 0000:00:1f.3: reg 0x20: [io  0x0700-0x073f]
+Sep 26 14:24:07 gchopin kernel: [    0.232431] pci 0000:01:00.0: [1af4:1041] type 00 class 0x020000
+Sep 26 14:24:07 gchopin kernel: [    0.233447] pci 0000:01:00.0: reg 0x14: [mem 0xfe880000-0xfe880fff]
+Sep 26 14:24:07 gchopin kernel: [    0.234970] pci 0000:01:00.0: reg 0x20: [mem 0xfca00000-0xfca03fff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.235447] pci 0000:01:00.0: reg 0x30: [mem 0xfe800000-0xfe87ffff pref]
+Sep 26 14:24:07 gchopin kernel: [    0.237267] pci 0000:00:02.0: PCI bridge to [bus 01]
+Sep 26 14:24:07 gchopin kernel: [    0.237480] pci 0000:00:02.0:   bridge window [mem 0xfe800000-0xfe9fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.237830] pci 0000:00:02.0:   bridge window [mem 0xfca00000-0xfcbfffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.238934] pci 0000:02:00.0: [1b36:000d] type 00 class 0x0c0330
+Sep 26 14:24:07 gchopin kernel: [    0.239424] pci 0000:02:00.0: reg 0x10: [mem 0xfe600000-0xfe603fff 64bit]
+Sep 26 14:24:07 gchopin kernel: [    0.242135] pci 0000:00:02.1: PCI bridge to [bus 02]
+Sep 26 14:24:07 gchopin kernel: [    0.242294] pci 0000:00:02.1:   bridge window [mem 0xfe600000-0xfe7fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.242463] pci 0000:00:02.1:   bridge window [mem 0xfc800000-0xfc9fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.243240] pci 0000:03:00.0: [1af4:1043] type 00 class 0x078000
+Sep 26 14:24:07 gchopin kernel: [    0.244448] pci 0000:03:00.0: reg 0x14: [mem 0xfe400000-0xfe400fff]
+Sep 26 14:24:07 gchopin kernel: [    0.246448] pci 0000:03:00.0: reg 0x20: [mem 0xfc600000-0xfc603fff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.248485] pci 0000:00:02.2: PCI bridge to [bus 03]
+Sep 26 14:24:07 gchopin kernel: [    0.248741] pci 0000:00:02.2:   bridge window [mem 0xfe400000-0xfe5fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.249025] pci 0000:00:02.2:   bridge window [mem 0xfc600000-0xfc7fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.249877] pci 0000:04:00.0: [1af4:1042] type 00 class 0x010000
+Sep 26 14:24:07 gchopin kernel: [    0.252448] pci 0000:04:00.0: reg 0x14: [mem 0xfe200000-0xfe200fff]
+Sep 26 14:24:07 gchopin kernel: [    0.254433] pci 0000:04:00.0: reg 0x20: [mem 0xfc400000-0xfc403fff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.255688] pci 0000:00:02.3: PCI bridge to [bus 04]
+Sep 26 14:24:07 gchopin kernel: [    0.255845] pci 0000:00:02.3:   bridge window [mem 0xfe200000-0xfe3fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.256026] pci 0000:00:02.3:   bridge window [mem 0xfc400000-0xfc5fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.256587] pci 0000:05:00.0: [1af4:1045] type 00 class 0x00ff00
+Sep 26 14:24:07 gchopin kernel: [    0.258210] pci 0000:05:00.0: reg 0x20: [mem 0xfc200000-0xfc203fff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.259196] pci 0000:00:02.4: PCI bridge to [bus 05]
+Sep 26 14:24:07 gchopin kernel: [    0.259348] pci 0000:00:02.4:   bridge window [mem 0xfe000000-0xfe1fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.259461] pci 0000:00:02.4:   bridge window [mem 0xfc200000-0xfc3fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.260145] pci 0000:06:00.0: [1af4:1044] type 00 class 0x00ff00
+Sep 26 14:24:07 gchopin kernel: [    0.263324] pci 0000:06:00.0: reg 0x20: [mem 0xfc000000-0xfc003fff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.264357] pci 0000:00:02.5: PCI bridge to [bus 06]
+Sep 26 14:24:07 gchopin kernel: [    0.264462] pci 0000:00:02.5:   bridge window [mem 0xfde00000-0xfdffffff]
+Sep 26 14:24:07 gchopin kernel: [    0.264641] pci 0000:00:02.5:   bridge window [mem 0xfc000000-0xfc1fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.265228] pci 0000:00:02.6: PCI bridge to [bus 07]
+Sep 26 14:24:07 gchopin kernel: [    0.265379] pci 0000:00:02.6:   bridge window [mem 0xfdc00000-0xfddfffff]
+Sep 26 14:24:07 gchopin kernel: [    0.265461] pci 0000:00:02.6:   bridge window [mem 0xfbe00000-0xfbffffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.266827] pci 0000:00:02.7: PCI bridge to [bus 08]
+Sep 26 14:24:07 gchopin kernel: [    0.266979] pci 0000:00:02.7:   bridge window [mem 0xfda00000-0xfdbfffff]
+Sep 26 14:24:07 gchopin kernel: [    0.267153] pci 0000:00:02.7:   bridge window [mem 0xfbc00000-0xfbdfffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.267679] pci 0000:00:03.0: PCI bridge to [bus 09]
+Sep 26 14:24:07 gchopin kernel: [    0.267830] pci 0000:00:03.0:   bridge window [mem 0xfd800000-0xfd9fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.268007] pci 0000:00:03.0:   bridge window [mem 0xfba00000-0xfbbfffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.269000] pci 0000:00:03.1: PCI bridge to [bus 0a]
+Sep 26 14:24:07 gchopin kernel: [    0.269153] pci 0000:00:03.1:   bridge window [mem 0xfd600000-0xfd7fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.269328] pci 0000:00:03.1:   bridge window [mem 0xfb800000-0xfb9fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.269882] pci 0000:00:03.2: PCI bridge to [bus 0b]
+Sep 26 14:24:07 gchopin kernel: [    0.270027] pci 0000:00:03.2:   bridge window [mem 0xfd400000-0xfd5fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.270198] pci 0000:00:03.2:   bridge window [mem 0xfb600000-0xfb7fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.270679] pci 0000:00:03.3: PCI bridge to [bus 0c]
+Sep 26 14:24:07 gchopin kernel: [    0.270822] pci 0000:00:03.3:   bridge window [mem 0xfd200000-0xfd3fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.270990] pci 0000:00:03.3:   bridge window [mem 0xfb400000-0xfb5fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.271520] pci 0000:00:03.4: PCI bridge to [bus 0d]
+Sep 26 14:24:07 gchopin kernel: [    0.271665] pci 0000:00:03.4:   bridge window [mem 0xfd000000-0xfd1fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.271833] pci 0000:00:03.4:   bridge window [mem 0xfb200000-0xfb3fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.272425] pci 0000:00:03.5: PCI bridge to [bus 0e]
+Sep 26 14:24:07 gchopin kernel: [    0.272460] pci 0000:00:03.5:   bridge window [mem 0xfce00000-0xfcffffff]
+Sep 26 14:24:07 gchopin kernel: [    0.272629] pci 0000:00:03.5:   bridge window [mem 0xfb000000-0xfb1fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.277291] ACPI: PCI: Interrupt link LNKA configured for IRQ 10
+Sep 26 14:24:07 gchopin kernel: [    0.277477] ACPI: PCI: Interrupt link LNKB configured for IRQ 10
+Sep 26 14:24:07 gchopin kernel: [    0.277652] ACPI: PCI: Interrupt link LNKC configured for IRQ 11
+Sep 26 14:24:07 gchopin kernel: [    0.277822] ACPI: PCI: Interrupt link LNKD configured for IRQ 11
+Sep 26 14:24:07 gchopin kernel: [    0.277992] ACPI: PCI: Interrupt link LNKE configured for IRQ 10
+Sep 26 14:24:07 gchopin kernel: [    0.278490] ACPI: PCI: Interrupt link LNKF configured for IRQ 10
+Sep 26 14:24:07 gchopin kernel: [    0.278690] ACPI: PCI: Interrupt link LNKG configured for IRQ 11
+Sep 26 14:24:07 gchopin kernel: [    0.278868] ACPI: PCI: Interrupt link LNKH configured for IRQ 11
+Sep 26 14:24:07 gchopin kernel: [    0.279032] ACPI: PCI: Interrupt link GSIA configured for IRQ 16
+Sep 26 14:24:07 gchopin kernel: [    0.279185] ACPI: PCI: Interrupt link GSIB configured for IRQ 17
+Sep 26 14:24:07 gchopin kernel: [    0.279336] ACPI: PCI: Interrupt link GSIC configured for IRQ 18
+Sep 26 14:24:07 gchopin kernel: [    0.279449] ACPI: PCI: Interrupt link GSID configured for IRQ 19
+Sep 26 14:24:07 gchopin kernel: [    0.279599] ACPI: PCI: Interrupt link GSIE configured for IRQ 20
+Sep 26 14:24:07 gchopin kernel: [    0.279749] ACPI: PCI: Interrupt link GSIF configured for IRQ 21
+Sep 26 14:24:07 gchopin kernel: [    0.279901] ACPI: PCI: Interrupt link GSIG configured for IRQ 22
+Sep 26 14:24:07 gchopin kernel: [    0.280053] ACPI: PCI: Interrupt link GSIH configured for IRQ 23
+Sep 26 14:24:07 gchopin kernel: [    0.280443] iommu: Default domain type: Translated
+Sep 26 14:24:07 gchopin kernel: [    0.280446] iommu: DMA domain TLB invalidation policy: lazy mode
+Sep 26 14:24:07 gchopin kernel: [    0.280645] SCSI subsystem initialized
+Sep 26 14:24:07 gchopin kernel: [    0.280777] libata version 3.00 loaded.
+Sep 26 14:24:07 gchopin kernel: [    0.280777] ACPI: bus type USB registered
+Sep 26 14:24:07 gchopin kernel: [    0.280777] usbcore: registered new interface driver usbfs
+Sep 26 14:24:07 gchopin kernel: [    0.280783] usbcore: registered new interface driver hub
+Sep 26 14:24:07 gchopin kernel: [    0.280923] usbcore: registered new device driver usb
+Sep 26 14:24:07 gchopin kernel: [    0.281459] pps_core: LinuxPPS API ver. 1 registered
+Sep 26 14:24:07 gchopin kernel: [    0.281597] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+Sep 26 14:24:07 gchopin kernel: [    0.281822] PTP clock support registered
+Sep 26 14:24:07 gchopin kernel: [    0.281946] Advanced Linux Sound Architecture Driver Initialized.
+Sep 26 14:24:07 gchopin kernel: [    0.282489] NetLabel: Initializing
+Sep 26 14:24:07 gchopin kernel: [    0.282603] NetLabel:  domain hash size = 128
+Sep 26 14:24:07 gchopin kernel: [    0.282729] NetLabel:  protocols = UNLABELED CIPSOv4 CALIPSO
+Sep 26 14:24:07 gchopin kernel: [    0.282879] NetLabel:  unlabeled traffic allowed by default
+Sep 26 14:24:07 gchopin kernel: [    0.283029] PCI: Using ACPI for IRQ routing
+Sep 26 14:24:07 gchopin kernel: [    0.312188] PCI: pci_cache_line_size set to 64 bytes
+Sep 26 14:24:07 gchopin kernel: [    0.312395] e820: reserve RAM buffer [mem 0x0009fc00-0x0009ffff]
+Sep 26 14:24:07 gchopin kernel: [    0.312397] e820: reserve RAM buffer [mem 0x7ffdc000-0x7fffffff]
+Sep 26 14:24:07 gchopin kernel: [    0.312454] pci 0000:00:01.0: vgaarb: setting as boot VGA device
+Sep 26 14:24:07 gchopin kernel: [    0.312626] pci 0000:00:01.0: vgaarb: bridge control possible
+Sep 26 14:24:07 gchopin kernel: [    0.312776] pci 0000:00:01.0: vgaarb: VGA device added: decodes=io+mem,owns=io+mem,locks=none
+Sep 26 14:24:07 gchopin kernel: [    0.312993] vgaarb: loaded
+Sep 26 14:24:07 gchopin kernel: [    0.313205] clocksource: Switched to clocksource kvm-clock
+Sep 26 14:24:07 gchopin kernel: [    0.313361] VFS: Disk quotas dquot_6.6.0
+Sep 26 14:24:07 gchopin kernel: [    0.313361] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+Sep 26 14:24:07 gchopin kernel: [    0.313361] pnp: PnP ACPI init
+Sep 26 14:24:07 gchopin kernel: [    0.313361] system 00:04: [mem 0xb0000000-0xbfffffff window] has been reserved
+Sep 26 14:24:07 gchopin kernel: [    0.313523] pnp: PnP ACPI: found 5 devices
+Sep 26 14:24:07 gchopin kernel: [    0.320776] clocksource: acpi_pm: mask: 0xffffff max_cycles: 0xffffff, max_idle_ns: 2085701024 ns
+Sep 26 14:24:07 gchopin kernel: [    0.321039] NET: Registered PF_INET protocol family
+Sep 26 14:24:07 gchopin kernel: [    0.322377] IP idents hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+Sep 26 14:24:07 gchopin kernel: [    0.323988] tcp_listen_portaddr_hash hash table entries: 8192 (order: 5, 131072 bytes, linear)
+Sep 26 14:24:07 gchopin kernel: [    0.324260] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+Sep 26 14:24:07 gchopin kernel: [    0.324468] TCP established hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+Sep 26 14:24:07 gchopin kernel: [    0.325564] TCP bind hash table entries: 65536 (order: 9, 2097152 bytes, linear)
+Sep 26 14:24:07 gchopin kernel: [    0.326880] TCP: Hash tables configured (established 131072 bind 65536)
+Sep 26 14:24:07 gchopin kernel: [    0.327610] MPTCP token hash table entries: 16384 (order: 6, 393216 bytes, linear)
+Sep 26 14:24:07 gchopin kernel: [    0.327828] UDP hash table entries: 8192 (order: 6, 262144 bytes, linear)
+Sep 26 14:24:07 gchopin kernel: [    0.328287] UDP-Lite hash table entries: 8192 (order: 6, 262144 bytes, linear)
+Sep 26 14:24:07 gchopin kernel: [    0.328719] NET: Registered PF_UNIX/PF_LOCAL protocol family
+Sep 26 14:24:07 gchopin kernel: [    0.329139] RPC: Registered named UNIX socket transport module.
+Sep 26 14:24:07 gchopin kernel: [    0.329297] RPC: Registered udp transport module.
+Sep 26 14:24:07 gchopin kernel: [    0.329431] RPC: Registered tcp transport module.
+Sep 26 14:24:07 gchopin kernel: [    0.329565] RPC: Registered tcp-with-tls transport module.
+Sep 26 14:24:07 gchopin kernel: [    0.329708] RPC: Registered tcp NFSv4.1 backchannel transport module.
+Sep 26 14:24:07 gchopin kernel: [    0.329868] pci 0000:00:02.0: bridge window [io  0x1000-0x0fff] to [bus 01] add_size 1000
+Sep 26 14:24:07 gchopin kernel: [    0.330079] pci 0000:00:02.1: bridge window [io  0x1000-0x0fff] to [bus 02] add_size 1000
+Sep 26 14:24:07 gchopin kernel: [    0.330296] pci 0000:00:02.2: bridge window [io  0x1000-0x0fff] to [bus 03] add_size 1000
+Sep 26 14:24:07 gchopin kernel: [    0.330507] pci 0000:00:02.3: bridge window [io  0x1000-0x0fff] to [bus 04] add_size 1000
+Sep 26 14:24:07 gchopin kernel: [    0.330718] pci 0000:00:02.4: bridge window [io  0x1000-0x0fff] to [bus 05] add_size 1000
+Sep 26 14:24:07 gchopin kernel: [    0.330928] pci 0000:00:02.5: bridge window [io  0x1000-0x0fff] to [bus 06] add_size 1000
+Sep 26 14:24:07 gchopin kernel: [    0.331137] pci 0000:00:02.6: bridge window [io  0x1000-0x0fff] to [bus 07] add_size 1000
+Sep 26 14:24:07 gchopin kernel: [    0.331352] pci 0000:00:02.7: bridge window [io  0x1000-0x0fff] to [bus 08] add_size 1000
+Sep 26 14:24:07 gchopin kernel: [    0.331575] pci 0000:00:03.0: bridge window [io  0x1000-0x0fff] to [bus 09] add_size 1000
+Sep 26 14:24:07 gchopin kernel: [    0.331790] pci 0000:00:03.1: bridge window [io  0x1000-0x0fff] to [bus 0a] add_size 1000
+Sep 26 14:24:07 gchopin kernel: [    0.332005] pci 0000:00:03.2: bridge window [io  0x1000-0x0fff] to [bus 0b] add_size 1000
+Sep 26 14:24:07 gchopin kernel: [    0.332222] pci 0000:00:03.3: bridge window [io  0x1000-0x0fff] to [bus 0c] add_size 1000
+Sep 26 14:24:07 gchopin kernel: [    0.332432] pci 0000:00:03.4: bridge window [io  0x1000-0x0fff] to [bus 0d] add_size 1000
+Sep 26 14:24:07 gchopin kernel: [    0.332644] pci 0000:00:03.5: bridge window [io  0x1000-0x0fff] to [bus 0e] add_size 1000
+Sep 26 14:24:07 gchopin kernel: [    0.332856] pci 0000:00:02.0: BAR 7: assigned [io  0x1000-0x1fff]
+Sep 26 14:24:07 gchopin kernel: [    0.333012] pci 0000:00:02.1: BAR 7: assigned [io  0x2000-0x2fff]
+Sep 26 14:24:07 gchopin kernel: [    0.333167] pci 0000:00:02.2: BAR 7: assigned [io  0x3000-0x3fff]
+Sep 26 14:24:07 gchopin kernel: [    0.333326] pci 0000:00:02.3: BAR 7: assigned [io  0x4000-0x4fff]
+Sep 26 14:24:07 gchopin kernel: [    0.333478] pci 0000:00:02.4: BAR 7: assigned [io  0x5000-0x5fff]
+Sep 26 14:24:07 gchopin kernel: [    0.333631] pci 0000:00:02.5: BAR 7: assigned [io  0x6000-0x6fff]
+Sep 26 14:24:07 gchopin kernel: [    0.333783] pci 0000:00:02.6: BAR 7: assigned [io  0x7000-0x7fff]
+Sep 26 14:24:07 gchopin kernel: [    0.333938] pci 0000:00:02.7: BAR 7: assigned [io  0x8000-0x8fff]
+Sep 26 14:24:07 gchopin kernel: [    0.334094] pci 0000:00:03.0: BAR 7: assigned [io  0x9000-0x9fff]
+Sep 26 14:24:07 gchopin kernel: [    0.334252] pci 0000:00:03.1: BAR 7: assigned [io  0xa000-0xafff]
+Sep 26 14:24:07 gchopin kernel: [    0.334408] pci 0000:00:03.2: BAR 7: assigned [io  0xb000-0xbfff]
+Sep 26 14:24:07 gchopin kernel: [    0.334561] pci 0000:00:03.3: BAR 7: assigned [io  0xd000-0xdfff]
+Sep 26 14:24:07 gchopin kernel: [    0.334713] pci 0000:00:03.4: BAR 7: assigned [io  0xe000-0xefff]
+Sep 26 14:24:07 gchopin kernel: [    0.334866] pci 0000:00:03.5: BAR 7: assigned [io  0xf000-0xffff]
+Sep 26 14:24:07 gchopin kernel: [    0.335020] pci 0000:00:02.0: PCI bridge to [bus 01]
+Sep 26 14:24:07 gchopin kernel: [    0.335165] pci 0000:00:02.0:   bridge window [io  0x1000-0x1fff]
+Sep 26 14:24:07 gchopin kernel: [    0.336425] pci 0000:00:02.0:   bridge window [mem 0xfe800000-0xfe9fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.337128] pci 0000:00:02.0:   bridge window [mem 0xfca00000-0xfcbfffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.338378] pci 0000:00:02.1: PCI bridge to [bus 02]
+Sep 26 14:24:07 gchopin kernel: [    0.338520] pci 0000:00:02.1:   bridge window [io  0x2000-0x2fff]
+Sep 26 14:24:07 gchopin kernel: [    0.339549] pci 0000:00:02.1:   bridge window [mem 0xfe600000-0xfe7fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.340247] pci 0000:00:02.1:   bridge window [mem 0xfc800000-0xfc9fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.341497] pci 0000:00:02.2: PCI bridge to [bus 03]
+Sep 26 14:24:07 gchopin kernel: [    0.341638] pci 0000:00:02.2:   bridge window [io  0x3000-0x3fff]
+Sep 26 14:24:07 gchopin kernel: [    0.342592] pci 0000:00:02.2:   bridge window [mem 0xfe400000-0xfe5fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.343300] pci 0000:00:02.2:   bridge window [mem 0xfc600000-0xfc7fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.344630] pci 0000:00:02.3: PCI bridge to [bus 04]
+Sep 26 14:24:07 gchopin kernel: [    0.344772] pci 0000:00:02.3:   bridge window [io  0x4000-0x4fff]
+Sep 26 14:24:07 gchopin kernel: [    0.346331] pci 0000:00:02.3:   bridge window [mem 0xfe200000-0xfe3fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.347497] pci 0000:00:02.3:   bridge window [mem 0xfc400000-0xfc5fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.348922] pci 0000:00:02.4: PCI bridge to [bus 05]
+Sep 26 14:24:07 gchopin kernel: [    0.349060] pci 0000:00:02.4:   bridge window [io  0x5000-0x5fff]
+Sep 26 14:24:07 gchopin kernel: [    0.349690] pci 0000:00:02.4:   bridge window [mem 0xfe000000-0xfe1fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.350172] pci 0000:00:02.4:   bridge window [mem 0xfc200000-0xfc3fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.350999] pci 0000:00:02.5: PCI bridge to [bus 06]
+Sep 26 14:24:07 gchopin kernel: [    0.351133] pci 0000:00:02.5:   bridge window [io  0x6000-0x6fff]
+Sep 26 14:24:07 gchopin kernel: [    0.351775] pci 0000:00:02.5:   bridge window [mem 0xfde00000-0xfdffffff]
+Sep 26 14:24:07 gchopin kernel: [    0.352309] pci 0000:00:02.5:   bridge window [mem 0xfc000000-0xfc1fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.353149] pci 0000:00:02.6: PCI bridge to [bus 07]
+Sep 26 14:24:07 gchopin kernel: [    0.353287] pci 0000:00:02.6:   bridge window [io  0x7000-0x7fff]
+Sep 26 14:24:07 gchopin kernel: [    0.353922] pci 0000:00:02.6:   bridge window [mem 0xfdc00000-0xfddfffff]
+Sep 26 14:24:07 gchopin kernel: [    0.354542] pci 0000:00:02.6:   bridge window [mem 0xfbe00000-0xfbffffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.355771] pci 0000:00:02.7: PCI bridge to [bus 08]
+Sep 26 14:24:07 gchopin kernel: [    0.355936] pci 0000:00:02.7:   bridge window [io  0x8000-0x8fff]
+Sep 26 14:24:07 gchopin kernel: [    0.356989] pci 0000:00:02.7:   bridge window [mem 0xfda00000-0xfdbfffff]
+Sep 26 14:24:07 gchopin kernel: [    0.357717] pci 0000:00:02.7:   bridge window [mem 0xfbc00000-0xfbdfffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.363630] pci 0000:00:03.0: PCI bridge to [bus 09]
+Sep 26 14:24:07 gchopin kernel: [    0.363771] pci 0000:00:03.0:   bridge window [io  0x9000-0x9fff]
+Sep 26 14:24:07 gchopin kernel: [    0.364375] pci 0000:00:03.0:   bridge window [mem 0xfd800000-0xfd9fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.364847] pci 0000:00:03.0:   bridge window [mem 0xfba00000-0xfbbfffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.365665] pci 0000:00:03.1: PCI bridge to [bus 0a]
+Sep 26 14:24:07 gchopin kernel: [    0.365805] pci 0000:00:03.1:   bridge window [io  0xa000-0xafff]
+Sep 26 14:24:07 gchopin kernel: [    0.366418] pci 0000:00:03.1:   bridge window [mem 0xfd600000-0xfd7fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.366914] pci 0000:00:03.1:   bridge window [mem 0xfb800000-0xfb9fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.367740] pci 0000:00:03.2: PCI bridge to [bus 0b]
+Sep 26 14:24:07 gchopin kernel: [    0.367889] pci 0000:00:03.2:   bridge window [io  0xb000-0xbfff]
+Sep 26 14:24:07 gchopin kernel: [    0.368500] pci 0000:00:03.2:   bridge window [mem 0xfd400000-0xfd5fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.368984] pci 0000:00:03.2:   bridge window [mem 0xfb600000-0xfb7fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.369809] pci 0000:00:03.3: PCI bridge to [bus 0c]
+Sep 26 14:24:07 gchopin kernel: [    0.369946] pci 0000:00:03.3:   bridge window [io  0xd000-0xdfff]
+Sep 26 14:24:07 gchopin kernel: [    0.371248] pci 0000:00:03.3:   bridge window [mem 0xfd200000-0xfd3fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.372347] pci 0000:00:03.3:   bridge window [mem 0xfb400000-0xfb5fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.373194] pci 0000:00:03.4: PCI bridge to [bus 0d]
+Sep 26 14:24:07 gchopin kernel: [    0.373336] pci 0000:00:03.4:   bridge window [io  0xe000-0xefff]
+Sep 26 14:24:07 gchopin kernel: [    0.373925] pci 0000:00:03.4:   bridge window [mem 0xfd000000-0xfd1fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.374373] pci 0000:00:03.4:   bridge window [mem 0xfb200000-0xfb3fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.375823] pci 0000:00:03.5: PCI bridge to [bus 0e]
+Sep 26 14:24:07 gchopin kernel: [    0.375974] pci 0000:00:03.5:   bridge window [io  0xf000-0xffff]
+Sep 26 14:24:07 gchopin kernel: [    0.376598] pci 0000:00:03.5:   bridge window [mem 0xfce00000-0xfcffffff]
+Sep 26 14:24:07 gchopin kernel: [    0.377060] pci 0000:00:03.5:   bridge window [mem 0xfb000000-0xfb1fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.377867] pci_bus 0000:00: resource 4 [io  0x0000-0x0cf7 window]
+Sep 26 14:24:07 gchopin kernel: [    0.378019] pci_bus 0000:00: resource 5 [io  0x0d00-0xffff window]
+Sep 26 14:24:07 gchopin kernel: [    0.378168] pci_bus 0000:00: resource 6 [mem 0x000a0000-0x000bffff window]
+Sep 26 14:24:07 gchopin kernel: [    0.378335] pci_bus 0000:00: resource 7 [mem 0x80000000-0xafffffff window]
+Sep 26 14:24:07 gchopin kernel: [    0.378492] pci_bus 0000:00: resource 8 [mem 0xc0000000-0xfebfffff window]
+Sep 26 14:24:07 gchopin kernel: [    0.378648] pci_bus 0000:00: resource 9 [mem 0x300000000-0xaffffffff window]
+Sep 26 14:24:07 gchopin kernel: [    0.378807] pci_bus 0000:01: resource 0 [io  0x1000-0x1fff]
+Sep 26 14:24:07 gchopin kernel: [    0.378943] pci_bus 0000:01: resource 1 [mem 0xfe800000-0xfe9fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.379091] pci_bus 0000:01: resource 2 [mem 0xfca00000-0xfcbfffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.379281] pci_bus 0000:02: resource 0 [io  0x2000-0x2fff]
+Sep 26 14:24:07 gchopin kernel: [    0.379419] pci_bus 0000:02: resource 1 [mem 0xfe600000-0xfe7fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.379566] pci_bus 0000:02: resource 2 [mem 0xfc800000-0xfc9fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.379751] pci_bus 0000:03: resource 0 [io  0x3000-0x3fff]
+Sep 26 14:24:07 gchopin kernel: [    0.379893] pci_bus 0000:03: resource 1 [mem 0xfe400000-0xfe5fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.380040] pci_bus 0000:03: resource 2 [mem 0xfc600000-0xfc7fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.380224] pci_bus 0000:04: resource 0 [io  0x4000-0x4fff]
+Sep 26 14:24:07 gchopin kernel: [    0.380366] pci_bus 0000:04: resource 1 [mem 0xfe200000-0xfe3fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.380513] pci_bus 0000:04: resource 2 [mem 0xfc400000-0xfc5fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.380697] pci_bus 0000:05: resource 0 [io  0x5000-0x5fff]
+Sep 26 14:24:07 gchopin kernel: [    0.380836] pci_bus 0000:05: resource 1 [mem 0xfe000000-0xfe1fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.380986] pci_bus 0000:05: resource 2 [mem 0xfc200000-0xfc3fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.381171] pci_bus 0000:06: resource 0 [io  0x6000-0x6fff]
+Sep 26 14:24:07 gchopin kernel: [    0.381313] pci_bus 0000:06: resource 1 [mem 0xfde00000-0xfdffffff]
+Sep 26 14:24:07 gchopin kernel: [    0.381463] pci_bus 0000:06: resource 2 [mem 0xfc000000-0xfc1fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.381652] pci_bus 0000:07: resource 0 [io  0x7000-0x7fff]
+Sep 26 14:24:07 gchopin kernel: [    0.381789] pci_bus 0000:07: resource 1 [mem 0xfdc00000-0xfddfffff]
+Sep 26 14:24:07 gchopin kernel: [    0.381938] pci_bus 0000:07: resource 2 [mem 0xfbe00000-0xfbffffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.382616] pci_bus 0000:08: resource 0 [io  0x8000-0x8fff]
+Sep 26 14:24:07 gchopin kernel: [    0.382753] pci_bus 0000:08: resource 1 [mem 0xfda00000-0xfdbfffff]
+Sep 26 14:24:07 gchopin kernel: [    0.382902] pci_bus 0000:08: resource 2 [mem 0xfbc00000-0xfbdfffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.383089] pci_bus 0000:09: resource 0 [io  0x9000-0x9fff]
+Sep 26 14:24:07 gchopin kernel: [    0.383226] pci_bus 0000:09: resource 1 [mem 0xfd800000-0xfd9fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.383375] pci_bus 0000:09: resource 2 [mem 0xfba00000-0xfbbfffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.383563] pci_bus 0000:0a: resource 0 [io  0xa000-0xafff]
+Sep 26 14:24:07 gchopin kernel: [    0.383700] pci_bus 0000:0a: resource 1 [mem 0xfd600000-0xfd7fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.383849] pci_bus 0000:0a: resource 2 [mem 0xfb800000-0xfb9fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.384035] pci_bus 0000:0b: resource 0 [io  0xb000-0xbfff]
+Sep 26 14:24:07 gchopin kernel: [    0.384174] pci_bus 0000:0b: resource 1 [mem 0xfd400000-0xfd5fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.384327] pci_bus 0000:0b: resource 2 [mem 0xfb600000-0xfb7fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.384514] pci_bus 0000:0c: resource 0 [io  0xd000-0xdfff]
+Sep 26 14:24:07 gchopin kernel: [    0.384653] pci_bus 0000:0c: resource 1 [mem 0xfd200000-0xfd3fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.384799] pci_bus 0000:0c: resource 2 [mem 0xfb400000-0xfb5fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.384983] pci_bus 0000:0d: resource 0 [io  0xe000-0xefff]
+Sep 26 14:24:07 gchopin kernel: [    0.385122] pci_bus 0000:0d: resource 1 [mem 0xfd000000-0xfd1fffff]
+Sep 26 14:24:07 gchopin kernel: [    0.385276] pci_bus 0000:0d: resource 2 [mem 0xfb200000-0xfb3fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.385475] pci_bus 0000:0e: resource 0 [io  0xf000-0xffff]
+Sep 26 14:24:07 gchopin kernel: [    0.385621] pci_bus 0000:0e: resource 1 [mem 0xfce00000-0xfcffffff]
+Sep 26 14:24:07 gchopin kernel: [    0.385771] pci_bus 0000:0e: resource 2 [mem 0xfb000000-0xfb1fffff 64bit pref]
+Sep 26 14:24:07 gchopin kernel: [    0.386186] ACPI: \_SB_.GSIG: Enabled at IRQ 22
+Sep 26 14:24:07 gchopin kernel: [    0.386995] PCI: CLS 0 bytes, default 64
+Sep 26 14:24:07 gchopin kernel: [    0.387120] PCI-DMA: Using software bounce buffering for IO (SWIOTLB)
+Sep 26 14:24:07 gchopin kernel: [    0.387285] software IO TLB: mapped [mem 0x000000007bfdc000-0x000000007ffdc000] (64MB)
+Sep 26 14:24:07 gchopin kernel: [    0.387965] RAPL PMU: API unit is 2^-32 Joules, 0 fixed counters, 10737418240 ms ovfl timer
+Sep 26 14:24:07 gchopin kernel: [    0.388183] clocksource: tsc: mask: 0xffffffffffffffff max_cycles: 0x1e71785e5dd, max_idle_ns: 440795244814 ns
+Sep 26 14:24:07 gchopin kernel: [    0.390473] Initialise system trusted keyrings
+Sep 26 14:24:07 gchopin kernel: [    0.390701] workingset: timestamp_bits=40 max_order=22 bucket_order=0
+Sep 26 14:24:07 gchopin kernel: [    0.390968] NFS: Registering the id_resolver key type
+Sep 26 14:24:07 gchopin kernel: [    0.391104] Key type id_resolver registered
+Sep 26 14:24:07 gchopin kernel: [    0.391221] Key type id_legacy registered
+Sep 26 14:24:07 gchopin kernel: [    0.391360] fuse: init (API version 7.39)
+Sep 26 14:24:07 gchopin kernel: [    0.391505] 9p: Installing v9fs 9p2000 file system support
+Sep 26 14:24:07 gchopin kernel: [    0.396718] NET: Registered PF_ALG protocol family
+Sep 26 14:24:07 gchopin kernel: [    0.396873] Key type asymmetric registered
+Sep 26 14:24:07 gchopin kernel: [    0.397004] Asymmetric key parser 'x509' registered
+Sep 26 14:24:07 gchopin kernel: [    0.397145] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 251)
+Sep 26 14:24:07 gchopin kernel: [    0.397344] io scheduler mq-deadline registered
+Sep 26 14:24:07 gchopin kernel: [    0.397466] io scheduler kyber registered
+Sep 26 14:24:07 gchopin kernel: [    0.398850] pcieport 0000:00:02.0: PME: Signaling with IRQ 24
+Sep 26 14:24:07 gchopin kernel: [    0.399421] pcieport 0000:00:02.1: PME: Signaling with IRQ 25
+Sep 26 14:24:07 gchopin kernel: [    0.400356] pcieport 0000:00:02.2: PME: Signaling with IRQ 26
+Sep 26 14:24:07 gchopin kernel: [    0.401315] pcieport 0000:00:02.3: PME: Signaling with IRQ 27
+Sep 26 14:24:07 gchopin kernel: [    0.402246] pcieport 0000:00:02.4: PME: Signaling with IRQ 28
+Sep 26 14:24:07 gchopin kernel: [    0.403169] pcieport 0000:00:02.5: PME: Signaling with IRQ 29
+Sep 26 14:24:07 gchopin kernel: [    0.404659] pcieport 0000:00:02.6: PME: Signaling with IRQ 30
+Sep 26 14:24:07 gchopin kernel: [    0.406276] pcieport 0000:00:02.7: PME: Signaling with IRQ 31
+Sep 26 14:24:07 gchopin kernel: [    0.406635] ACPI: \_SB_.GSIH: Enabled at IRQ 23
+Sep 26 14:24:07 gchopin kernel: [    0.407347] pcieport 0000:00:03.0: PME: Signaling with IRQ 32
+Sep 26 14:24:07 gchopin kernel: [    0.408294] pcieport 0000:00:03.1: PME: Signaling with IRQ 33
+Sep 26 14:24:07 gchopin kernel: [    0.409220] pcieport 0000:00:03.2: PME: Signaling with IRQ 34
+Sep 26 14:24:07 gchopin kernel: [    0.410156] pcieport 0000:00:03.3: PME: Signaling with IRQ 35
+Sep 26 14:24:07 gchopin kernel: [    0.411103] pcieport 0000:00:03.4: PME: Signaling with IRQ 36
+Sep 26 14:24:07 gchopin kernel: [    0.412084] pcieport 0000:00:03.5: PME: Signaling with IRQ 37
+Sep 26 14:24:07 gchopin kernel: [    0.412406] input: Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input0
+Sep 26 14:24:07 gchopin kernel: [    0.412626] ACPI: button: Power Button [PWRF]
+Sep 26 14:24:07 gchopin kernel: [    0.413110] ACPI: \_SB_.GSIF: Enabled at IRQ 21
+Sep 26 14:24:07 gchopin kernel: [    0.417569] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+Sep 26 14:24:07 gchopin kernel: [    0.417824] 00:00: ttyS0 at I/O 0x3f8 (irq = 4, base_baud = 115200) is a 16550A
+Sep 26 14:24:07 gchopin kernel: [    0.422922] Non-volatile memory driver v1.3
+Sep 26 14:24:07 gchopin kernel: [    0.423049] Linux agpgart interface v0.103
+Sep 26 14:24:07 gchopin kernel: [    0.423446] ACPI: bus type drm_connector registered
+Sep 26 14:24:07 gchopin kernel: [    0.425238] brd: module loaded
+Sep 26 14:24:07 gchopin kernel: [    0.427239] loop: module loaded
+Sep 26 14:24:07 gchopin kernel: [    0.427404] virtio_blk virtio3: 8/0/0 default/read/poll queues
+Sep 26 14:24:07 gchopin kernel: [    0.429260] virtio_blk virtio3: [vda] 83886080 512-byte logical blocks (42.9 GB/40.0 GiB)
+Sep 26 14:24:07 gchopin kernel: [    0.430210]  vda: vda1 vda2 vda3
+Sep 26 14:24:07 gchopin kernel: [    0.430473] ahci 0000:00:1f.2: version 3.0
+Sep 26 14:24:07 gchopin kernel: [    0.430568] ACPI: \_SB_.GSIA: Enabled at IRQ 16
+Sep 26 14:24:07 gchopin kernel: [    0.431120] ahci 0000:00:1f.2: AHCI 0001.0000 32 slots 6 ports 1.5 Gbps 0x3f impl SATA mode
+Sep 26 14:24:07 gchopin kernel: [    0.431336] ahci 0000:00:1f.2: flags: 64bit ncq only 
+Sep 26 14:24:07 gchopin kernel: [    0.432372] scsi host0: ahci
+Sep 26 14:24:07 gchopin kernel: [    0.432652] scsi host1: ahci
+Sep 26 14:24:07 gchopin kernel: [    0.433006] scsi host2: ahci
+Sep 26 14:24:07 gchopin kernel: [    0.433307] scsi host3: ahci
+Sep 26 14:24:07 gchopin kernel: [    0.433580] scsi host4: ahci
+Sep 26 14:24:07 gchopin kernel: [    0.433840] scsi host5: ahci
+Sep 26 14:24:07 gchopin kernel: [    0.433972] ata1: SATA max UDMA/133 abar m4096@0xfea23000 port 0xfea23100 irq 49 lpm-pol 0
+Sep 26 14:24:07 gchopin kernel: [    0.434182] ata2: SATA max UDMA/133 abar m4096@0xfea23000 port 0xfea23180 irq 49 lpm-pol 0
+Sep 26 14:24:07 gchopin kernel: [    0.434394] ata3: SATA max UDMA/133 abar m4096@0xfea23000 port 0xfea23200 irq 49 lpm-pol 0
+Sep 26 14:24:07 gchopin kernel: [    0.434604] ata4: SATA max UDMA/133 abar m4096@0xfea23000 port 0xfea23280 irq 49 lpm-pol 0
+Sep 26 14:24:07 gchopin kernel: [    0.434809] ata5: SATA max UDMA/133 abar m4096@0xfea23000 port 0xfea23300 irq 49 lpm-pol 0
+Sep 26 14:24:07 gchopin kernel: [    0.435535] ata6: SATA max UDMA/133 abar m4096@0xfea23000 port 0xfea23380 irq 49 lpm-pol 0
+Sep 26 14:24:07 gchopin kernel: [    0.437057] e100: Intel(R) PRO/100 Network Driver
+Sep 26 14:24:07 gchopin kernel: [    0.437192] e100: Copyright(c) 1999-2006 Intel Corporation
+Sep 26 14:24:07 gchopin kernel: [    0.437344] e1000: Intel(R) PRO/1000 Network Driver
+Sep 26 14:24:07 gchopin kernel: [    0.437477] e1000: Copyright (c) 1999-2006 Intel Corporation.
+Sep 26 14:24:07 gchopin kernel: [    0.437625] e1000e: Intel(R) PRO/1000 Network Driver
+Sep 26 14:24:07 gchopin kernel: [    0.437758] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+Sep 26 14:24:07 gchopin kernel: [    0.437912] sky2: driver version 1.30
+Sep 26 14:24:07 gchopin kernel: [    0.438433] xhci_hcd 0000:02:00.0: xHCI Host Controller
+Sep 26 14:24:07 gchopin kernel: [    0.438621] xhci_hcd 0000:02:00.0: new USB bus registered, assigned bus number 1
+Sep 26 14:24:07 gchopin kernel: [    0.438964] xhci_hcd 0000:02:00.0: hcc params 0x00087001 hci version 0x100 quirks 0x0000000000000010
+Sep 26 14:24:07 gchopin kernel: [    0.443324] xhci_hcd 0000:02:00.0: xHCI Host Controller
+Sep 26 14:24:07 gchopin kernel: [    0.443491] xhci_hcd 0000:02:00.0: new USB bus registered, assigned bus number 2
+Sep 26 14:24:07 gchopin kernel: [    0.443688] xhci_hcd 0000:02:00.0: Host supports USB 3.0 SuperSpeed
+Sep 26 14:24:07 gchopin kernel: [    0.443874] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 6.07
+Sep 26 14:24:07 gchopin kernel: [    0.444086] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+Sep 26 14:24:07 gchopin kernel: [    0.444280] usb usb1: Product: xHCI Host Controller
+Sep 26 14:24:07 gchopin kernel: [    0.444415] usb usb1: Manufacturer: Linux 6.7.4-gchopin xhci-hcd
+Sep 26 14:24:07 gchopin kernel: [    0.444564] usb usb1: SerialNumber: 0000:02:00.0
+Sep 26 14:24:07 gchopin kernel: [    0.444784] hub 1-0:1.0: USB hub found
+Sep 26 14:24:07 gchopin kernel: [    0.444934] hub 1-0:1.0: 15 ports detected
+Sep 26 14:24:07 gchopin kernel: [    0.445375] usb usb2: We don't know the algorithms for LPM for this host, disabling LPM.
+Sep 26 14:24:07 gchopin kernel: [    0.445702] usb usb2: New USB device found, idVendor=1d6b, idProduct=0003, bcdDevice= 6.07
+Sep 26 14:24:07 gchopin kernel: [    0.445910] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+Sep 26 14:24:07 gchopin kernel: [    0.446104] usb usb2: Product: xHCI Host Controller
+Sep 26 14:24:07 gchopin kernel: [    0.446242] usb usb2: Manufacturer: Linux 6.7.4-gchopin xhci-hcd
+Sep 26 14:24:07 gchopin kernel: [    0.446395] usb usb2: SerialNumber: 0000:02:00.0
+Sep 26 14:24:07 gchopin kernel: [    0.446560] hub 2-0:1.0: USB hub found
+Sep 26 14:24:07 gchopin kernel: [    0.446710] hub 2-0:1.0: 15 ports detected
+Sep 26 14:24:07 gchopin kernel: [    0.447113] usbcore: registered new interface driver usblp
+Sep 26 14:24:07 gchopin kernel: [    0.447263] usbcore: registered new interface driver usb-storage
+Sep 26 14:24:07 gchopin kernel: [    0.447432] i8042: PNP: PS/2 Controller [PNP0303:KBD,PNP0f13:MOU] at 0x60,0x64 irq 1,12
+Sep 26 14:24:07 gchopin kernel: [    0.448282] serio: i8042 KBD port at 0x60,0x64 irq 1
+Sep 26 14:24:07 gchopin kernel: [    0.448417] serio: i8042 AUX port at 0x60,0x64 irq 12
+Sep 26 14:24:07 gchopin kernel: [    0.448664] mousedev: PS/2 mouse device common for all mice
+Sep 26 14:24:07 gchopin kernel: [    0.448955] input: AT Translated Set 2 keyboard as /devices/platform/i8042/serio0/input/input1
+Sep 26 14:24:07 gchopin kernel: [    0.449416] rtc_cmos 00:03: RTC can wake from S4
+Sep 26 14:24:07 gchopin kernel: [    0.449936] rtc_cmos 00:03: registered as rtc0
+Sep 26 14:24:07 gchopin kernel: [    0.450102] rtc_cmos 00:03: alarms up to one day, y3k, 242 bytes nvram
+Sep 26 14:24:07 gchopin kernel: [    0.450493] i801_smbus 0000:00:1f.3: SMBus using PCI interrupt
+Sep 26 14:24:07 gchopin kernel: [    0.450673] i2c i2c-0: 1/1 memory slots populated (from DMI)
+Sep 26 14:24:07 gchopin kernel: [    0.450819] i2c i2c-0: Memory type 0x07 not supported yet, not instantiating SPD
+Sep 26 14:24:07 gchopin kernel: [    0.451119] device-mapper: ioctl: 4.48.0-ioctl (2023-03-01) initialised: dm-devel@redhat.com
+Sep 26 14:24:07 gchopin kernel: [    0.451441] intel_pstate: CPU model not supported
+Sep 26 14:24:07 gchopin kernel: [    0.451577] hid: raw HID events driver (C) Jiri Kosina
+Sep 26 14:24:07 gchopin kernel: [    0.451778] usbcore: registered new interface driver usbhid
+Sep 26 14:24:07 gchopin kernel: [    0.451927] usbhid: USB HID core driver
+Sep 26 14:24:07 gchopin kernel: [    0.454504] ipip: IPv4 and MPLS over IPv4 tunneling driver
+Sep 26 14:24:07 gchopin kernel: [    0.454984] gre: GRE over IPv4 demultiplexor driver
+Sep 26 14:24:07 gchopin kernel: [    0.455119] ip_gre: GRE over IPv4 tunneling driver
+Sep 26 14:24:07 gchopin kernel: [    0.455718] snd_hda_intel 0000:00:1b.0: Cannot probe codecs, giving up
+Sep 26 14:24:07 gchopin kernel: [    0.456276] Initializing XFRM netlink socket
+Sep 26 14:24:07 gchopin kernel: [    0.456409] NET: Registered PF_INET6 protocol family
+Sep 26 14:24:07 gchopin kernel: [    0.457061] Segment Routing with IPv6
+Sep 26 14:24:07 gchopin kernel: [    0.457179] In-situ OAM (IOAM) with IPv6
+Sep 26 14:24:07 gchopin kernel: [    0.457320] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+Sep 26 14:24:07 gchopin kernel: [    0.457573] ip6_gre: GRE over IPv6 tunneling driver
+Sep 26 14:24:07 gchopin kernel: [    0.457743] NET: Registered PF_PACKET protocol family
+Sep 26 14:24:07 gchopin kernel: [    0.457891] 8021q: 802.1Q VLAN Support v1.8
+Sep 26 14:24:07 gchopin kernel: [    0.458019] 9pnet: Installing 9P2000 support
+Sep 26 14:24:07 gchopin kernel: [    0.458155] Key type dns_resolver registered
+Sep 26 14:24:07 gchopin kernel: [    0.458983] IPI shorthand broadcast: enabled
+Sep 26 14:24:07 gchopin kernel: [    0.460007] sched_clock: Marking stable (435001573, 24232330)->(650838305, -191604402)
+Sep 26 14:24:07 gchopin kernel: [    0.460356] registered taskstats version 1
+Sep 26 14:24:07 gchopin kernel: [    0.460479] Loading compiled-in X.509 certificates
+Sep 26 14:24:07 gchopin kernel: [    0.461497] PM:   Magic number: 8:619:431
+Sep 26 14:24:07 gchopin kernel: [    0.461656] printk: legacy console [netcon0] enabled
+Sep 26 14:24:07 gchopin kernel: [    0.461792] netconsole: network logging started
+Sep 26 14:24:07 gchopin kernel: [    0.461950] ALSA device list:
+Sep 26 14:24:07 gchopin kernel: [    0.462056]   No soundcards found.
+Sep 26 14:24:07 gchopin kernel: [    0.684326] usb 1-1: new high-speed USB device number 2 using xhci_hcd
+Sep 26 14:24:07 gchopin kernel: [    0.743658] ata1: SATA link down (SStatus 0 SControl 300)
+Sep 26 14:24:07 gchopin kernel: [    0.744944] ata2: SATA link down (SStatus 0 SControl 300)
+Sep 26 14:24:07 gchopin kernel: [    0.746176] ata4: SATA link down (SStatus 0 SControl 300)
+Sep 26 14:24:07 gchopin kernel: [    0.747485] ata6: SATA link down (SStatus 0 SControl 300)
+Sep 26 14:24:07 gchopin kernel: [    0.748733] ata5: SATA link down (SStatus 0 SControl 300)
+Sep 26 14:24:07 gchopin kernel: [    0.749997] ata3: SATA link down (SStatus 0 SControl 300)
+Sep 26 14:24:07 gchopin kernel: [    0.816966] usb 1-1: New USB device found, idVendor=0627, idProduct=0001, bcdDevice= 0.00
+Sep 26 14:24:07 gchopin kernel: [    0.818193] usb 1-1: New USB device strings: Mfr=1, Product=3, SerialNumber=10
+Sep 26 14:24:07 gchopin kernel: [    0.819332] usb 1-1: Product: QEMU USB Tablet
+Sep 26 14:24:07 gchopin kernel: [    0.820045] usb 1-1: Manufacturer: QEMU
+Sep 26 14:24:07 gchopin kernel: [    0.820713] usb 1-1: SerialNumber: 28754-0000:00:02.1:00.0-1
+Sep 26 14:24:07 gchopin kernel: [    0.826574] input: QEMU QEMU USB Tablet as /devices/pci0000:00/0000:00:02.1/0000:02:00.0/usb1/1-1/1-1:1.0/0003:0627:0001.0001/input/input4
+Sep 26 14:24:07 gchopin kernel: [    0.830986] hid-generic 0003:0627:0001.0001: input,hidraw0: USB HID v0.01 Mouse [QEMU QEMU USB Tablet] on usb-0000:02:00.0-1/input0
+Sep 26 14:24:07 gchopin kernel: [    1.080221] input: ImExPS/2 Generic Explorer Mouse as /devices/platform/i8042/serio1/input/input3
+Sep 26 14:24:07 gchopin kernel: [    1.083284] md: Waiting for all devices to be available before autodetect
+Sep 26 14:24:07 gchopin kernel: [    1.084694] md: If you don't use raid, use raid=noautodetect
+Sep 26 14:24:07 gchopin kernel: [    1.085880] md: Autodetecting RAID arrays.
+Sep 26 14:24:07 gchopin kernel: [    1.086293] md: autorun ...
+Sep 26 14:24:07 gchopin kernel: [    1.086493] md: ... autorun DONE.
+Sep 26 14:24:07 gchopin kernel: [    1.092635] EXT4-fs (vda3): mounted filesystem 849c14f9-1af6-4c59-be69-708f5a0ca971 ro with ordered data mode. Quota mode: none.
+Sep 26 14:24:07 gchopin kernel: [    1.094926] VFS: Mounted root (ext4 filesystem) readonly on device 253:3.
+Sep 26 14:24:07 gchopin kernel: [    1.097381] devtmpfs: mounted
+Sep 26 14:24:07 gchopin kernel: [    1.099424] Freeing unused kernel image (initmem) memory: 2536K
+Sep 26 14:24:07 gchopin kernel: [    1.100356] Write protecting the kernel read-only data: 22528k
+Sep 26 14:24:07 gchopin kernel: [    1.101620] Freeing unused kernel image (rodata/data gap) memory: 428K
+Sep 26 14:24:07 gchopin kernel: [    1.119704] x86/mm: Checked W+X mappings: passed, no W+X pages found.
+Sep 26 14:24:07 gchopin kernel: [    1.119985] Run /sbin/init as init process
+Sep 26 14:24:07 gchopin kernel: [    1.120173]   with arguments:
+Sep 26 14:24:07 gchopin kernel: [    1.120174]     /sbin/init
+Sep 26 14:24:07 gchopin kernel: [    1.120174]   with environment:
+Sep 26 14:24:07 gchopin kernel: [    1.120175]     HOME=/
+Sep 26 14:24:07 gchopin kernel: [    1.120175]     TERM=linux
+Sep 26 14:24:07 gchopin kernel: [    1.120176]     BOOT_IMAGE=/vmlinuz-6.7.4-gchopin
+Sep 26 14:24:07 gchopin kernel: [    1.134157] stty (110) used greatest stack depth: 13184 bytes left
+Sep 26 14:24:07 gchopin kernel: [    1.164936] mount (117) used greatest stack depth: 13080 bytes left
+Sep 26 14:24:07 gchopin kernel: [    1.331210] ip (215) used greatest stack depth: 12592 bytes left
+Sep 26 14:24:07 gchopin kernel: <30>[    1.391995] udevd[240]: Starting systemd-udevd version 254
+Sep 26 14:24:07 gchopin kernel: <30>[    1.413110] udevd[241]: Using default interface naming scheme 'v253'.
+Sep 26 14:24:07 gchopin kernel: [    1.470384] [drm] pci: virtio-vga detected at 0000:00:01.0
+Sep 26 14:24:07 gchopin kernel: [    1.470705] virtio-pci 0000:00:01.0: vgaarb: deactivate vga console
+Sep 26 14:24:07 gchopin kernel: [    1.478959] Console: switching to colour dummy device 80x25
+Sep 26 14:24:07 gchopin kernel: [    1.479118] [drm] features: -virgl +edid -resource_blob -host_visible
+Sep 26 14:24:07 gchopin kernel: [    1.479119] [drm] features: -context_init
+Sep 26 14:24:07 gchopin kernel: [    1.479464] [drm] number of scanouts: 1
+Sep 26 14:24:07 gchopin kernel: [    1.479467] [drm] number of cap sets: 0
+Sep 26 14:24:07 gchopin kernel: [    1.480548] [drm] Initialized virtio_gpu 0.1.0 0 for 0000:00:01.0 on minor 0
+Sep 26 14:24:07 gchopin kernel: [    1.483864] fbcon: virtio_gpudrmfb (fb0) is primary device
+Sep 26 14:24:07 gchopin kernel: [    1.486895] Console: switching to colour frame buffer device 128x48
+Sep 26 14:24:07 gchopin kernel: [    1.487133] virtio-pci 0000:00:01.0: [drm] fb0: virtio_gpudrmfb frame buffer device
+Sep 26 14:24:07 gchopin kernel: [    2.056656] Adding 2097148k swap on /dev/vda2.  Priority:1 extents:1 across:2097148k 
+Sep 26 14:24:07 gchopin kernel: [    2.102312] EXT4-fs (vda3): re-mounted 849c14f9-1af6-4c59-be69-708f5a0ca971 ro. Quota mode: none.
+Sep 26 14:24:07 gchopin kernel: [    2.179482] EXT4-fs (vda3): re-mounted 849c14f9-1af6-4c59-be69-708f5a0ca971 r/w. Quota mode: none.
+Sep 26 14:24:07 gchopin kernel: [    2.205023] EXT4-fs (vda1): mounting ext2 file system using the ext4 subsystem
+Sep 26 14:24:07 gchopin kernel: [    2.218397] EXT4-fs (vda1): mounted filesystem 69efa423-e957-4dc9-9f2f-ed43e5d4ecfd r/w without journal. Quota mode: none.
+Sep 26 14:24:07 gchopin kernel: [    3.291357] 8021q: adding VLAN 0 to HW filter on device eth0
+Sep 26 14:24:11 gchopin kernel: [    7.043451] (udev-worker) (251) used greatest stack depth: 12400 bytes left
+Sep 26 14:26:45 gchopin kernel: [  161.643047] usb 1-3: new low-speed USB device number 3 using xhci_hcd
+Sep 26 14:26:46 gchopin kernel: [  162.228341] usb 1-3: New USB device found, idVendor=413c, idProduct=2113, bcdDevice= 1.10
+Sep 26 14:26:46 gchopin kernel: [  162.228734] usb 1-3: New USB device strings: Mfr=0, Product=2, SerialNumber=0
+Sep 26 14:26:46 gchopin kernel: [  162.229135] usb 1-3: Product: Dell KB216 Wired Keyboard
+Sep 26 14:26:46 gchopin kernel: [  162.235847] input: Dell KB216 Wired Keyboard as /devices/pci0000:00/0000:00:02.1/0000:02:00.0/usb1/1-3/1-3:1.0/0003:413C:2113.0002/input/input5
+Sep 26 14:26:46 gchopin kernel: [  162.288704] hid-generic 0003:413C:2113.0002: input,hidraw1: USB HID v1.11 Keyboard [Dell KB216 Wired Keyboard] on usb-0000:02:00.0-3/input0
+Sep 26 14:26:46 gchopin kernel: [  162.297438] input: Dell KB216 Wired Keyboard Consumer Control as /devices/pci0000:00/0000:00:02.1/0000:02:00.0/usb1/1-3/1-3:1.1/0003:413C:2113.0003/input/input6
+Sep 26 14:26:46 gchopin kernel: [  162.350255] input: Dell KB216 Wired Keyboard System Control as /devices/pci0000:00/0000:00:02.1/0000:02:00.0/usb1/1-3/1-3:1.1/0003:413C:2113.0003/input/input7
+Sep 26 14:26:46 gchopin kernel: [  162.352109] hid-generic 0003:413C:2113.0003: input,hidraw2: USB HID v1.11 Device [Dell KB216 Wired Keyboard] on usb-0000:02:00.0-3/input1
+Sep 26 14:26:46 gchopin kernel: [  162.366738] main: loading out-of-tree module taints kernel.
+Sep 26 14:26:46 gchopin kernel: [  162.369845] Hello world, keyboard module loaded !

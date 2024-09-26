@@ -7,26 +7,20 @@
 MODULE_LICENSE("GPL");
 
 /*
- * Tell userspace about long sleep
+ * Try to sleep, tell userspace about long sleep
  */
-static void sleep_info(void)
-{
-	pr_info("We slept a long time!");
-}
-
 static int do_work(int *my_int)
 {
 	int	i;
 	int	j = *my_int;
-	int	result;
+	int	k;
 
 	for (i = 0; i < *my_int; ++i)
 		udelay(10);
-	if (j < 10) {
-		sleep_info();
-		result = i * j;
-	}
-	return 0;
+	if (j < 10)
+		pr_info("We slept a long time!");
+	k = i * j;
+	return k;
 }
 
 static int my_init(void)

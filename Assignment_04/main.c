@@ -8,13 +8,13 @@ MODULE_AUTHOR("gchopin");
 
 static int __init init_hello(void)
 {
-	pr_info("Hello world !\n");
+	pr_info("Hello world, keyboard module loaded !\n");
 	return 0;
 }
 
 static void __exit exit_hello(void)
 {
-	pr_info("Cleaning up module.\n");
+	pr_info("Cleaning up module, keyboard module unloaded.\n");
 }
 
 module_init(init_hello);
