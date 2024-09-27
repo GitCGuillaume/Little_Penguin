@@ -7,26 +7,34 @@
 #include <linux/slab.h>
 
 static ssize_t my_fd_read(struct file *fp, char __user *user,
-		size_t size, loff_t *offs);
+			  size_t size, loff_t *offs);
 static ssize_t my_fd_write(struct file *fp, const char __user *user,
-		size_t size, loff_t *offs);
+			   size_t size, loff_t *offs);
 static const struct file_operations myfd_fops = {
 	.owner = THIS_MODULE,
 	.read = &my_fd_read,
 	.write = &my_fd_write
 };
+
 static struct miscdevice myfd_device = {
 	.minor = MISC_DYNAMIC_MINOR,
 	.name = "reverse",
 	.fops = &myfd_fops
 };
+
+/*
+ * protect my_fd_read and my_fd_write
+ */
 struct mutex lock;
 char str[PAGE_SIZE];
 
+/*
+ * define mutex for my_fd_read, my_fd_write
+ */
 DEFINE_MUTEX(lock);
 
 static ssize_t my_fd_read(struct file *fp, char __user *user,
-		size_t size, loff_t *offs)
+			  size_t size, loff_t *offs)
 {
 	ssize_t i, j;
 	ssize_t res;
@@ -38,8 +46,10 @@ static ssize_t my_fd_read(struct file *fp, char __user *user,
 		return -EINTR;
 	j = strlen(str);
 	tmp = kmalloc(sizeof(char) * (j + 1), GFP_KERNEL);
-	if (!tmp)
+	if (!tmp) {
+		mutex_unlock(&lock);
 		return -EFAULT;
+	}
 	for (j = j - 1, i = 0; j >= 0; j--, i++)
 		tmp[i] = str[j];
 	tmp[i] = 0;
@@ -51,7 +61,7 @@ static ssize_t my_fd_read(struct file *fp, char __user *user,
 }
 
 static ssize_t my_fd_write(struct file *fp, const char __user *user,
-		size_t size, loff_t *offs)
+			   size_t size, loff_t *offs)
 {
 	ssize_t res;
 

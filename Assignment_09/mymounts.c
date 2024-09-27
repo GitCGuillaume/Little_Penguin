@@ -35,9 +35,9 @@ static int show(struct seq_file *file, void *private)
 	struct mount *mnt = NULL;
 
 	for (mnt = rb_entry_safe(rb_first(root), struct mount, mnt_node);
-		mnt != NULL;
+		mnt;
 		mnt = rb_entry_safe(rb_next(&mnt->mnt_node),
-			struct mount, mnt_node)) {
+				    struct mount, mnt_node)) {
 		if (strcmp(mnt->mnt_devname, "rootfs") != 0)
 			show_device_info(file, mnt);
 	}
