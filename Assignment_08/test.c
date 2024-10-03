@@ -6,7 +6,7 @@
 #include <stdlib.h>
 
 #define SIZE 4096
-#define DEVICE_PATH "/sys/kernel/debug/fortytwo/foo"
+#define DEVICE_PATH "/dev/reverse"
 
 void	*routine_write_a(void *ptr)
 {

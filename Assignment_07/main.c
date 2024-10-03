@@ -55,8 +55,6 @@ static ssize_t ft_write(struct file *filep, const char __user *buf,
 static ssize_t ft_write_foo(struct file *filep, const char __user *buf,
 		size_t count, loff_t *offset)
 {
-	int ret;
-
 	if (count <= *offset)
 		return 0;
 	if (count >= PAGE_SIZE)
@@ -73,11 +71,11 @@ static ssize_t ft_write_foo(struct file *filep, const char __user *buf,
 		return -EFAULT;
 	}
 	clear_page(virtual_address);
-	ret = copy_from_user(virtual_address, buf, count);
-	if (ret) {
+	if (copy_from_user(virtual_address, buf, count)) {
 		mutex_unlock(&lock);
 		return -EFAULT;
 	}
+	*((char *)virtual_address + count) = 0;
 	*offset += count;
 	mutex_unlock(&lock);
 	return count;
@@ -140,8 +138,6 @@ static ssize_t read_jiffies(struct file *filep,  char __user *buf,
 static ssize_t ft_read_foo(struct file *filep,  char __user *buf,
 		size_t count, loff_t *offset)
 {
-	int ret = 0;
-
 	if (count <= *offset || !virtual_address)
 		return 0;
 	if (mutex_lock_interruptible(&lock))
@@ -155,8 +151,7 @@ static ssize_t ft_read_foo(struct file *filep,  char __user *buf,
 		mutex_unlock(&lock);
 		return -EFAULT;
 	}
-	ret = copy_to_user(buf, virtual_address, strlen(virtual_address));
-	if (ret) {
+	if (copy_to_user(buf, virtual_address, strlen(virtual_address))) {
 		mutex_unlock(&lock);
 		return -EFAULT;
 	}
