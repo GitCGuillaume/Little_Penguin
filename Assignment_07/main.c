@@ -9,20 +9,27 @@
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("gchopin");
 
+/*
+ * mutex lock for foo devices
+ */
+struct mutex lock;
 struct dentry *dentry_42;
 struct dentry *dentry_id;
 struct dentry *dentry_jiffies;
 struct dentry *dentry_foo;
 struct page *page_value;
-struct mutex lock;
 void *virtual_address;
+
+/*
+ * init mutex
+ */
 DEFINE_MUTEX(lock);
 
 /*
  * write part
  */
 static ssize_t ft_write(struct file *filep, const char __user *buf,
-		size_t count, loff_t *offset)
+			size_t count, loff_t *offset)
 {
 	char *str = NULL;
 	int ret = 0;
@@ -53,7 +60,7 @@ static ssize_t ft_write(struct file *filep, const char __user *buf,
  * https://www.kernel.org/doc/gorman/html/understand/understand009.html
  */
 static ssize_t ft_write_foo(struct file *filep, const char __user *buf,
-		size_t count, loff_t *offset)
+			    size_t count, loff_t *offset)
 {
 	if (count <= *offset)
 		return 0;
@@ -85,7 +92,7 @@ static ssize_t ft_write_foo(struct file *filep, const char __user *buf,
  * read part
  */
 static ssize_t ft_read(struct file *filep,  char __user *buf,
-		size_t count, loff_t *offset)
+		       size_t count, loff_t *offset)
 {
 	int ret = 0;
 
@@ -98,34 +105,42 @@ static ssize_t ft_read(struct file *filep,  char __user *buf,
 	return count;
 }
 
-static size_t nb_len(unsigned long cpy)
+/*
+ * return integer length + \n
+ */
+static int	ft_intlen(u64 value)
 {
-	size_t len = 0;
+	int len = 1;
 
-	if (cpy == 0)
-		return 1;
-	while (cpy != 0) {
-		++len;
-		cpy /= 10;
+	if (value > 0) {
+		len = 0;
+		while (value > 0) {
+			value /= 10;
+			++len;
+		}
 	}
+	++len;
 	return len;
 }
 
 static ssize_t read_jiffies(struct file *filep,  char __user *buf,
-		size_t count, loff_t *offset)
+			    size_t count, loff_t *offset)
 {
-	unsigned long cpy = jiffies;
-	char *str;
-	int ret;
+	u64	tmp = get_jiffies_64();
+	char	*str;
+	int	len;
+	int	ret;
 
 	if (count <= *offset)
 		return 0;
-	str = kzalloc((nb_len(cpy) * sizeof(char)) + 2, GFP_KERNEL);
-	if (!str)
+	len = ft_intlen(tmp);
+	str = kzalloc((sizeof(char) * len) + 1, GFP_KERNEL);
+	if (snprintf(str, len, "%llu", tmp) < 0) {
+		kfree(str);
 		return -EFAULT;
-	snprintf(str, nb_len(cpy) + 1, "%ld", cpy);
-	str[nb_len(cpy)] = '\n';
-	ret = copy_to_user(buf, str, nb_len(cpy) + 1);
+	}
+	str[len - 1] = '\n';
+	ret = copy_to_user(buf, str, len);
 	if (ret) {
 		kfree(str);
 		return -EFAULT;
@@ -136,7 +151,7 @@ static ssize_t read_jiffies(struct file *filep,  char __user *buf,
 }
 
 static ssize_t ft_read_foo(struct file *filep,  char __user *buf,
-		size_t count, loff_t *offset)
+			   size_t count, loff_t *offset)
 {
 	if (count <= *offset || !virtual_address)
 		return 0;
@@ -159,6 +174,7 @@ static ssize_t ft_read_foo(struct file *filep,  char __user *buf,
 	mutex_unlock(&lock);
 	return count;
 }
+
 const struct file_operations fops = {
 	.owner = THIS_MODULE,
 	.read = ft_read,
@@ -179,11 +195,12 @@ const struct file_operations fops_foo = {
 /*
  * https://www.kernel.org/doc/Documentation/filesystems/debugfs.rst
  */
-static int init_debugfs_file(const char *name, const umode_t mode,
-		struct dentry **d, const struct file_operations *f_op)
+static int init_debugfs_file_2(const char *name, const umode_t mode,
+			       struct dentry **d,
+			       const struct file_operations *f_op)
 {
-	if (!d)
-		return 1;
+	if (!name || !d || !f_op)
+		return -1;
 	*d = debugfs_create_file(name, mode, dentry_42, NULL, f_op);
 	if (!*d) {
 		pr_err("Couldn't initialize debugfs device.");
@@ -194,36 +211,56 @@ static int init_debugfs_file(const char *name, const umode_t mode,
 	return 0;
 }
 
+static int init_debugfs_file_1(void)
+{
+	int res = init_debugfs_file_2("id", 0666, &dentry_id, &fops);
+
+	if (res) {
+		__free_page(page_value);
+		debugfs_remove(dentry_42);
+		return res;
+	}
+	res = init_debugfs_file_2("jiffies", 0444,
+				  &dentry_jiffies, &fops_jiffies);
+	if (res) {
+		__free_page(page_value);
+		debugfs_remove(dentry_id);
+		debugfs_remove(dentry_42);
+		return res;
+	}
+	res = init_debugfs_file_2("foo", 0644, &dentry_foo, &fops_foo);
+	if (res) {
+		__free_page(page_value);
+		debugfs_remove(dentry_id);
+		debugfs_remove(dentry_jiffies);
+		debugfs_remove(dentry_42);
+		return res;
+	}
+	return 0;
+}
+
 /*
  * https://www.kernel.org/doc/Documentation/filesystems/debugfs.rst
  */
 static int __init init_hello(void)
 {
-	int res = 0;
+	int	res;
 
-	page_value = NULL;
+	page_value = alloc_page(GFP_KERNEL);
+	if (!page_value)
+		return -ENOMEM;
 	dentry_42 = debugfs_create_dir("fortytwo", NULL);
 	if (!dentry_42) {
+		__free_page(page_value);
 		pr_err("Couldn't initialize fortytwo directory.");
 		if (ERR_PTR(-ENODEV))
 			return -ENODEV;
 		return -EINVAL;
 	}
-	res = init_debugfs_file("id", 0666, &dentry_id, &fops);
-	if (res)
-		return res;
-	res = init_debugfs_file("jiffies", 0444,
-			&dentry_jiffies, &fops_jiffies);
-	if (res)
-		return res;
-	res = init_debugfs_file("foo", 0644, &dentry_foo, &fops_foo);
-	if (res)
-		return res;
-	page_value = alloc_page(GFP_KERNEL);
-	if (!page_value)
-		return -ENOMEM;
-	pr_info("Hello world !\n");
-	return 0;
+	res = init_debugfs_file_1();
+	if (!res)
+		pr_info("Hello world !\n");
+	return res;
 }
 
 static void __exit exit_hello(void)

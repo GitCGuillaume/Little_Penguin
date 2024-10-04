@@ -9,7 +9,7 @@ MODULE_LICENSE("GPL");
 MODULE_AUTHOR("gchopin");
 
 static ssize_t ft_read(struct file *filep,  char __user *buf,
-		size_t count, loff_t *offset)
+		       size_t count, loff_t *offset)
 {
 	int ret = 0;
 
@@ -23,7 +23,7 @@ static ssize_t ft_read(struct file *filep,  char __user *buf,
 }
 
 static ssize_t ft_write(struct file *filep, const char __user *buf,
-		size_t count, loff_t *offset)
+			size_t count, loff_t *offset)
 {
 	char *str = NULL;
 	int ret = 0;
