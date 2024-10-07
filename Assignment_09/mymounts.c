@@ -3,10 +3,11 @@
 #include <linux/kernel.h>
 #include <linux/proc_fs.h>
 #include <linux/nsproxy.h>
+#include <linux/semaphore.h>
 #include <../fs/mount.h>
 
 struct	proc_dir_entry *proc_mymounts;
-static	DECLARE_RWSEM(namespace_sem);
+struct	semaphore sem;
 
 /*
  * https://docs.kernel.org/filesystems/seq_file.html
@@ -29,7 +30,8 @@ static void	show_device_info(struct seq_file *file, struct mount *mnt)
 
 static int show(struct seq_file *file, void *private)
 {
-	down_read(&namespace_sem);
+	if (down_interruptible(&sem))
+		return -ERESTARTSYS;
 	struct mnt_namespace *mnt_ns = current->nsproxy->mnt_ns;
 	struct rb_root *root = &mnt_ns->mounts;
 	struct mount *mnt = NULL;
@@ -41,7 +43,7 @@ static int show(struct seq_file *file, void *private)
 		if (strcmp(mnt->mnt_devname, "rootfs") != 0)
 			show_device_info(file, mnt);
 	}
-	up_read(&namespace_sem);
+	up(&sem);
 	return 0;
 }
 
@@ -58,6 +60,7 @@ const struct proc_ops p_ops = {
 
 static int __init init_mymounts(void)
 {
+	sema_init(&sem, 1);
 	proc_mymounts = proc_create("mymounts", 0444, NULL, &p_ops);
 	if (!proc_mymounts)
 		return -ENOMEM;
