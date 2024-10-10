@@ -47,7 +47,7 @@ void	*routine_write_b(void *ptr)
 }
 void	*routine_read(void *ptr)
 {
-	char str[4096] = { 0 };
+	char str[SIZE] = { 0 };
 	int fd = open(DEVICE_PATH, O_RDONLY);
 
 	(void)ptr;

@@ -14,6 +14,9 @@ obj-m += main.o
 all:	$(TESTER)
 	make -C /lib/modules/$(VERSION)/build M=$(PWD) modules
 
+chmod:
+	chmod -v 755 /sys/kernel/debug
+
 clean:
 	make -C /lib/modules/$(VERSION)/build M=$(PWD) clean
 	rm -f $(OBJ) $(TESTER)

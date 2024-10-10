@@ -153,7 +153,7 @@ static ssize_t read_jiffies(struct file *filep,  char __user *buf,
 static ssize_t ft_read_foo(struct file *filep,  char __user *buf,
 			   size_t count, loff_t *offset)
 {
-	if (count <= *offset || !virtual_address)
+	if (count <= *offset)
 		return 0;
 	if (mutex_lock_interruptible(&lock))
 		return -EINTR;
@@ -249,6 +249,13 @@ static int __init init_hello(void)
 	page_value = alloc_page(GFP_KERNEL);
 	if (!page_value)
 		return -ENOMEM;
+	virtual_address = page_address(page_value);
+	if (!virtual_address) {
+		if (page_value)
+			__free_page(page_value);
+		return -ENOMEM;
+	}
+	clear_page(virtual_address);
 	dentry_42 = debugfs_create_dir("fortytwo", NULL);
 	if (!dentry_42) {
 		__free_page(page_value);

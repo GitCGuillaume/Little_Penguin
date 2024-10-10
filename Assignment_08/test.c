@@ -94,6 +94,15 @@ int	main(void)
 	pthread_join(thr1_write[0], NULL);
 	pthread_join(thr1_write[1], NULL);
 	pthread_join(thr2_read, NULL);
+	/* WRITE */
+	usleep(100);
+	pthread_create(&thr1_write[0], NULL, routine_write_b, "abc");
+	/* READ */
+	usleep(100);
+	pthread_create(&thr2_read, NULL, routine_read, NULL);
+	/* CLEAN */
+	pthread_join(thr1_write[0], NULL);
+	pthread_join(thr2_read, NULL);
 	close(fd_a);
 	close(fd_b);
 	return 0;
