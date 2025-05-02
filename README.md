@@ -9,6 +9,7 @@ http://eudyptula-challenge.org/
 Assignment 01 :
 
 Le but de ce module est d'insérer et retirer un module du kernel.
+
 ![image](https://github.com/user-attachments/assets/700f651c-1168-42e1-a25f-d697bcdb88ed)
 
 Assignment 04 :
@@ -16,6 +17,7 @@ Assignment 04 :
 Ce module doit afficher un message de log lorsqu'un clavier se branche à l'aide du système Udev de Linux
 Udev permet d'avoir une gestion des périphériques sous le système d'exploitation Linux
 Pour se faire, il suffit de créer une "règle" qu'il traduira depuis son dossier de configuration.
+
 ![image](https://github.com/user-attachments/assets/abcf74e7-0798-4123-9518-b7943f57d898)
 
 Assignment 05 :
@@ -43,4 +45,5 @@ Assignment 09 :
 Nous devons maintenant créer un module qui va charger un fichier virtuel dans le dossier /proc, là où nous pouvons observer certains comportement du système que ça soit ses processus ou pour ses composants, comme obtenir toutes les partitions, la version du noyau Linux et bien d'autres
 
 A l'aide des fonctions mise à disposition par le noyau linux, j'ai pu obtenir chaque nom et chaque point de monture qu'il représente.
+
 ![image](https://github.com/user-attachments/assets/cbbecf7f-423e-4cae-9130-9343bed97031)
